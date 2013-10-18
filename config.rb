@@ -1,4 +1,4 @@
-require "zurb-foundation"
+require 'zurb-foundation'
 
-css_dir = "css"
-sass_dir = "sass"
+css_dir = 'css'
+sass_dir = 'sass'

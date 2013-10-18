@@ -1,6 +1,12 @@
+@import 'normalize';
+@import 'foundation';
+//@import 'foundation/components/global';
+//@import 'foundation/components/grid';
+
 $background: #222;
 $foreground: #ccc;
 body {
+	font-family: Arial, sans-serif;
 	background: $background;
 	color: $foreground;
 }
