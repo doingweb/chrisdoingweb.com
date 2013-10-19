@@ -1,0 +1,44 @@
+@mixin text-inset {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75), 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+@mixin text-raised {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.page {
+	text-align: center;
+
+	&> header {
+		margin-top: 10%;
+		&> h1 {
+			text-transform: uppercase;
+			font-size: 4rem;
+			letter-spacing: -0.25rem;
+			line-height: 1em;
+
+			@include text-inset;
+
+			&> a:hover {
+				text-decoration: none;
+				text-shadow: inherit;
+			}
+		}
+	}
+}
+
+a {
+	&:hover {
+		color: $primary-color;
+		text-decoration: underline;
+	}
+}
+
+p {
+	@include text-raised;
+	font-size: 1.2rem;
+}
+
+ul, ol {
+	list-style: none;
+}

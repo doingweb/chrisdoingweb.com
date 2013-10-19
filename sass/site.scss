@@ -1,8 +1,10 @@
-@import 'normalize';
 @import 'foundation-variables';
-@import 'foundation';
-//@import 'foundation/components/global';
-//@import 'foundation/components/grid';
+
+@import 'normalize';
+@import 'foundation/components/global';
+@import 'foundation/components/grid';
+@import 'foundation/components/type';
+@import 'foundation/components/inline-lists';
 
 @import 'syntax';
 

@@ -4,3 +4,4 @@ node_modules
 .sass-cache
 *.lock
 css
+credentials.json

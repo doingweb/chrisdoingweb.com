@@ -1,0 +1,18 @@
+.page {
+	&> header, &> main, &> footer {
+		@include grid-row;
+	}
+
+	&> footer {
+		margin-top: 4rem;
+
+		&> .contact {
+			@include inline-list;
+
+			&> li {
+				float: none;
+				display: inline-block;
+			}
+		}
+	}
+}
