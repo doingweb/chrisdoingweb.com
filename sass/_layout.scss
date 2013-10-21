@@ -1,8 +1,4 @@
 .page {
-	&> header, &> main, &> footer {
-		@include grid-row;
-	}
-
 	&> footer {
 		margin-top: 4rem;
 
