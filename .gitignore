@@ -5,3 +5,4 @@ node_modules
 *.lock
 css
 credentials.json
+modernizr.js
