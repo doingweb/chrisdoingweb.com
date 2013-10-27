@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				tasks: 'compass:development'
 			},
 			jekyll: {
-				files: ['**/*.html', 'css/**', '**/*.js', '!_site/**', '!sass/**', '!Gruntfile.*', '!node_modules/**'],
+				files: ['**/*.html', 'css/**', '**/*.js', '!_site/**', '!sass/**', '!Gruntfile.*', '!node_modules/**', '!README*'],
 				tasks: 'jekyll:build',
 				options: {
 					livereload: true
@@ -52,19 +52,20 @@ module.exports = function(grunt) {
 		},
 		s3: {
 			options: {
+				bucket: '<%= credentials.aws.bucket %>',
 				key: '<%= credentials.aws.key %>',
 				secret: '<%= credentials.aws.secret %>',
-				bucket: '<%= credentials.aws.bucket %>',
+				region: '<%= credentials.aws.region %>',
 				gzip: true,
 				access: 'public-read'
 			},
 			deploy: {
-				upload: [
-					{
-						src: '_site/**',
-						dest: ''
+				upload: grunt.file.expand({ cwd: '_site', filter: 'isFile' }, '**').map(function (file) {
+					return {
+						src: '_site/' + file,
+						dest: file
 					}
-				]
+				})
 			}
 		}
 	});

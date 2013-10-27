@@ -1,4 +1,4 @@
 name: Chris Doing Web
 markdown: redcarpet
 pygments: true
-exclude: ['Gemfile*', 'Guardfile', '*.rb', 'sass', 'node_modules', 'Gruntfile.*', 'package.json', 'credentials.json']
+exclude: ['Gemfile*', 'Guardfile', '*.rb', 'sass', 'node_modules', 'Gruntfile.*', 'package.json', 'credentials.json', 'README.*']
