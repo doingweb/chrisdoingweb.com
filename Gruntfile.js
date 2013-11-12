@@ -1,12 +1,6 @@
 module.exports = function(grunt) {
 	"use strict";
 
-	grunt.registerTask('build', function (environment) {
-		grunt.task.run('compass:' + (environment || 'production'));
-		grunt.task.run('modernizr');
-		grunt.task.run('jekyll:build');
-	});
-
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		credentials: grunt.file.readJSON('credentials.json'),
@@ -27,8 +21,30 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		modernizr: {
+			devFile: 'js/modernizr.js', // If we want a real dev version, we'll need to have two build stages (grunt and jekyll)
+			outputFile: 'js/modernizr.js'
+		},
 		jekyll: {
 			build: {}
+		},
+		replace: {
+			analytics: {
+				options: {
+					patterns: [
+						{
+							match: 'googleAnalyticsTrackingID',
+							replacement: '<%= credentials.google.analytics.id %>'
+						}
+					]
+				},
+				files: [
+					{
+						src: ['_site/**/*.html'],
+						dest: './'
+					}
+				]
+			}
 		},
 		watch: {
 			options: {
@@ -45,10 +61,6 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			}
-		},
-		modernizr: {
-			devFile: 'js/modernizr.js', // If we want a real dev version, we'll need to have two build stages (grunt and jekyll)
-			outputFile: 'js/modernizr.js'
 		},
 		s3: {
 			options: {
@@ -70,9 +82,14 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-compass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-jekyll');
-	grunt.loadNpmTasks('grunt-modernizr');
-	grunt.loadNpmTasks('grunt-s3');
+	require('load-grunt-tasks')(grunt);
+
+	grunt.registerTask('build', function (environment) {
+		grunt.task.run([
+			'compass:' + (environment || 'production'),
+			'modernizr',
+			'jekyll:build',
+			'replace'
+		]);
+	});
 };
