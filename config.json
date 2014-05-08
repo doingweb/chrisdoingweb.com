@@ -13,8 +13,7 @@
 	],
 	"require": {
 		"moment": "moment",
-		"_": "underscore",
-		"typogr": "typogr"
+		"_": "underscore"
 	},
 	"markdown": {
 		"smartLists": true,
