@@ -1,5 +1,6 @@
+{{!< layout.html }}
 
-extends layout
+{{!--
 
 block append vars
   - bodyclass = 'article-detail'
@@ -22,4 +23,5 @@ block prepend footer
   div.nav
     a(href=contents.index.url) « Full blog
 
-
+ --}}
+<article>{{{page.html}}}</article>
