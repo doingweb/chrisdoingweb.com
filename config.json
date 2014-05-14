@@ -24,6 +24,7 @@
 	},
 	"node-sass": {
 		"includePaths": [
+			"./contents/css",
 			"./bower_components"
 		]
 	}
