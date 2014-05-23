@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "moment": "2.3.x",
-    "underscore": "1.4.x"
+    "underscore": "1.4.x",
+    "wintersmith-handlebars": "0.0.5",
+    "wintersmith-livereload": "^0.1.1",
+    "wintersmith-node-sass": "^0.1.0"
   },
   "repository": "none"
 }

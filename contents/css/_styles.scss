@@ -1,0 +1,11 @@
+body > header {
+	background: #eee;
+}
+
+body > footer .photo {
+	background: $secondary-color;
+
+	& img {
+		border-radius: 50%;
+	}
+}
