@@ -3,21 +3,23 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>{{title}}</title>
+		<title>{{title}} | Chris Doing Web</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="alternate" href="{{locals.url}}/feed.xml" type="application/rss+xml" title="{{locals.description}}">
+		<link rel="alternate" href="/feed.xml" type="application/rss+xml" title="{{locals.description}}">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
 		<link rel="stylesheet" href="/css/main.css">
-		<script src="js/modernizr.js"></script>
+		<script src="/js/modernizr.js"></script>
 	</head>
 	<body>
 		{{> browse-happy }}
 
 		{{> header }}
+
 		<main>
-		{{{body}}}
+			{{> body }}
 		</main>
+
 		{{> footer }}
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

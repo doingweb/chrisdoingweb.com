@@ -1,0 +1,28 @@
+{{#extend 'site' }}
+  {{#replace 'body'}}
+    {{#each articles}}
+      <article>
+        <header>
+          <h1><a href="/{{path}}">{{title}}</a></h1>
+          <p class="date"><span>{{date}}</span></p>
+        </header>
+        <section class="content">
+          {{{excerpt}}}
+          <a href="/{{path}}">more</a>
+        </section>
+      </article>
+    {{/each}}
+
+    <nav>
+      <!-- TODO: Pagination.  -->
+      {{#if previous}}
+        <a href="{{previous.path}}">Newer</a>
+      {{else}}
+        <a href="/archive/">Archives</a>
+      {{/if}}
+      {{#if next}}
+        <a href="{{next.path}}">Next page</a>
+      {{/if}}
+    </nav>
+  {{/replace}}
+{{/extend}}

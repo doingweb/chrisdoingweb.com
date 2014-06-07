@@ -1,8 +1,7 @@
 bower_components
 node_modules
-.idea
 .sass-cache
 *.lock
 credentials.json
 modernizr.js
-build/
+dist/
