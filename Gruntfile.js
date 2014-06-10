@@ -47,21 +47,38 @@ module.exports = function(grunt) {
     },
 
     assemble: {
-      blag: {
-        options: {
-          flatten: true,
-          layout: '<%= paths.src %>/templates/layouts/site.hbs',
+      options: {
+          layoutdir: '<%= paths.src %>/templates/layouts',
+          layout: 'site.hbs',
           partials: '<%= paths.src %>/templates/partials/*.hbs',
           assets: '<%= paths.dist %>/assets',
           data: '<%= paths.src %>/data/*.{json,yml}',
           plugins: ['assemble-contrib-sitemap', 'assemble-contrib-permalinks'],
+          sitemap: {
+            dest: '<%= paths.dist %>/'
+          },
           permalinks: {
             preset: 'pretty'
           }
+      },
+      root: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.src %>/content/',
+          src: '*.{md,hbs}',
+          dest: '<%= paths.dist %>/'
+        }]
+      },
+      articles: {
+        options: {
+          layout: 'article.hbs'
         },
-        files: {
-          '<%= paths.dist %>/': ['<%= paths.src %>/content/**/*.hbs']
-        }
+        files: [{
+          expand: true,
+          cwd: '<%= paths.src %>/content/articles/',
+          src: '**/*.{md,hbs}',
+          dest: '<%= paths.dist %>/articles/'
+        }]
       }
     },
 

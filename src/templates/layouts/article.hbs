@@ -1,0 +1,20 @@
+---
+layout: site.hbs
+---
+<article>
+  <header>
+    <h1>{{page.data.title}}</h1>
+    <span>{{page.data.date}}</span>
+  </header>
+  <section class="contents">
+    {{md page.src}}
+  </section>
+</article>
+{{#if previous}}
+  <a href="/{{previous.path}}">Newer article</a>
+{{else}}
+  <a href="/archive/">Archives</a>
+{{/if}}
+{{#if next}}
+  <a href="/{{next.path}}">Next article</a>
+{{/if}}
