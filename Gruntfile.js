@@ -53,6 +53,9 @@ module.exports = function(grunt) {
           partials: '<%= paths.src %>/templates/partials/*.hbs',
           assets: '<%= paths.dist %>/assets',
           data: '<%= paths.src %>/data/*.{json,yml}',
+          marked: {
+            gfm: true
+          },
           plugins: ['assemble-contrib-sitemap', 'assemble-contrib-permalinks'],
           sitemap: {
             dest: '<%= paths.dist %>/'
@@ -71,7 +74,8 @@ module.exports = function(grunt) {
       },
       articles: {
         options: {
-          layout: 'article.hbs'
+          layout: 'article.hbs',
+          partials: ['<%= paths.src %>/content/articles/**/*.md']
         },
         files: [{
           expand: true,
