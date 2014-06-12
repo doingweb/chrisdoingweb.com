@@ -6,14 +6,18 @@ module.exports = function(grunt) {
 
     paths: {
       src: 'src',
-      dist: 'dist'
+      dist: 'dist',
+      assets: '<%= paths.dist %>/assets',
+      content: '<%= paths.src %>/content',
+      data: '<%= paths.src %>/data',
+      templates: '<%= paths.src %>/templates'
     },
 
 		credentials: grunt.file.readJSON('credentials.json'),
 
     watch: {
       assemble: {
-        files: ['<%= paths.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
+        files: ['<%= paths.src %>/{content,data,templates}/**/*.{md,hbs,yml}'],
         tasks: ['assemble']
       },
       livereload: {
@@ -21,10 +25,10 @@ module.exports = function(grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= paths.dist %>/{,*/}*.html',
-          '<%= paths.dist %>/assets/{,*/}*.css',
-          '<%= paths.dist %>/assets/{,*/}*.js',
-          '<%= paths.dist %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= paths.dist %>/**/*.html',
+          '<%= paths.assets %>/{,*/}*.css',
+          '<%= paths.assets %>/{,*/}*.js',
+          '<%= paths.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -48,11 +52,11 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-          layoutdir: '<%= paths.src %>/templates/layouts',
+          layoutdir: '<%= paths.templates %>/layouts',
           layout: 'site.hbs',
-          partials: '<%= paths.src %>/templates/partials/*.hbs',
-          assets: '<%= paths.dist %>/assets',
-          data: '<%= paths.src %>/data/*.{json,yml}',
+          partials: '<%= paths.templates %>/partials/*.hbs',
+          assets: '<%= paths.assets %>',
+          data: '<%= paths.data %>/*.{json,yml}',
           marked: {
             gfm: true
           },
@@ -67,7 +71,7 @@ module.exports = function(grunt) {
       root: {
         files: [{
           expand: true,
-          cwd: '<%= paths.src %>/content/',
+          cwd: '<%= paths.content %>/',
           src: '*.{md,hbs}',
           dest: '<%= paths.dist %>/'
         }]
@@ -75,11 +79,11 @@ module.exports = function(grunt) {
       articles: {
         options: {
           layout: 'article.hbs',
-          partials: ['<%= paths.src %>/content/articles/**/*.md']
+          partials: ['<%= paths.content %>/articles/**/*.md']
         },
         files: [{
           expand: true,
-          cwd: '<%= paths.src %>/content/articles/',
+          cwd: '<%= paths.content %>/articles/',
           src: '**/*.{md,hbs}',
           dest: '<%= paths.dist %>/articles/'
         }]

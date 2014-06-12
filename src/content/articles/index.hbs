@@ -5,12 +5,12 @@ layout: site.hbs
 {{#each pages}}
   <article>
     <header>
-      <h1><a href="/{{basename}}">{{data.title}}</a></h1>
-      <p class="date"><span>{{data.date}}</span></p>
+      <h1><a href="{{basename}}">{{data.title}}</a></h1>
+      <p class="date">{{data.date}}</p>
     </header>
     <section class="content">
       {{md src}}
-      <a href="/{{basename}}">more</a>
+      <a href="{{basename}}">more</a>
     </section>
   </article>
 {{/each}}
