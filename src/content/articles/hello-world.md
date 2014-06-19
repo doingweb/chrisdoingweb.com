@@ -1,8 +1,9 @@
 ---
 title: README
 author: the-wintersmith
-date: 2013-04-30
-template: article.html
+date: 2013-04-30 12:00:00 -7
+categories:
+- From Wintersmith
 ---
 
 Welcome to your new blog! This is the default blog template with RSS, pagination and an archive. There are other templates available -- run `wintersmith new --help` to list them.
@@ -73,4 +74,3 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ```
 
 This is where I leave you to your own devices. Join **#wintersmith** on freenode if you have any questions.
-

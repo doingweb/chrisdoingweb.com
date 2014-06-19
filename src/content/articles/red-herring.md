@@ -1,8 +1,9 @@
 ---
 title: A red herring
 author: baker
-date: 2013-04-01
-template: article.html
+date: 2013-04-01 12:00:00 -7
+categories:
+- From Wintersmith
 ---
 
 A long time ago, when the world was young -- someone put some food on their tongue.

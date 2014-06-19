@@ -4,17 +4,13 @@ layout: site.hbs
 <article>
   <header>
     <h1>{{page.data.title}}</h1>
-    <span>{{page.data.date}}</span>
+    <p class="date">{{moment page.data.date format='MMMM DD, YYYY'}}</p>
   </header>
-  <section class="contents">
-    {{md page.src}}
+  <section class="content">
+    {{#markdown}}
+      {{> body }}
+    {{/markdown}}
   </section>
 </article>
-{{#if previous}}
-  <a href="/{{previous.path}}">Newer article</a>
-{{else}}
-  <a href="/archive/">Archives</a>
-{{/if}}
-{{#if next}}
-  <a href="/{{next.path}}">Next article</a>
-{{/if}}
+
+<!-- TODO: Navigation between articles. -->

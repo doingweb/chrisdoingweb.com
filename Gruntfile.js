@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     paths: {
       src: 'src',
       dist: 'dist',
+      tmp: '.tmp',
       assets: '<%= paths.dist %>/assets',
       content: '<%= paths.src %>/content',
       data: '<%= paths.src %>/data',
@@ -52,41 +53,34 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-          layoutdir: '<%= paths.templates %>/layouts',
-          layout: 'site.hbs',
-          partials: '<%= paths.templates %>/partials/*.hbs',
-          assets: '<%= paths.assets %>',
-          data: '<%= paths.data %>/*.{json,yml}',
-          marked: {
-            gfm: true
-          },
-          plugins: ['assemble-contrib-sitemap', 'assemble-contrib-permalinks'],
-          sitemap: {
-            dest: '<%= paths.dist %>/'
-          },
-          permalinks: {
-            preset: 'pretty'
-          }
-      },
-      root: {
-        files: [{
-          expand: true,
-          cwd: '<%= paths.content %>/',
-          src: '*.{md,hbs}',
+        flatten: true,
+        layoutdir: '<%= paths.templates %>/layouts',
+        layout: 'site.hbs',
+        partials: '<%= paths.templates %>/partials/*.hbs',
+        assets: '<%= paths.assets %>',
+        data: '<%= paths.data %>/*.{json,yml}',
+        helpers: ['<%= paths.templates %>/helpers/*.js', 'helper-moment'],
+        marked: {
+          gfm: true
+        },
+        plugins: ['assemble-contrib-sitemap', 'assemble-contrib-permalinks'],
+        sitemap: {
           dest: '<%= paths.dist %>/'
-        }]
+        },
+        permalinks: {
+          preset: 'pretty'
+        }
       },
       articles: {
         options: {
-          layout: 'article.hbs',
-          partials: ['<%= paths.content %>/articles/**/*.md']
+          layout: 'article.hbs'
         },
-        files: [{
-          expand: true,
-          cwd: '<%= paths.content %>/articles/',
-          src: '**/*.{md,hbs}',
-          dest: '<%= paths.dist %>/articles/'
-        }]
+        src: '<%= paths.content %>/articles/**/*.{md,hbs}',
+        dest: '<%= paths.dist %>/articles/'
+      },
+      root: {
+        src: '<%= paths.content %>/*.hbs',
+        dest: '<%= paths.dist %>/'
       }
     },
 

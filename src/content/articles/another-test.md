@@ -1,6 +1,9 @@
 ---
 title: Code and stuff!
-date: 2012-10-01
+date: 2012-10-01 12:00:00 -7
+summary: A bunch of code samples.
+categories:
+- From Wintersmith
 ---
 
 Syntax highlighting with [highlight.js](http://softwaremaniacs.org/soft/highlight/en/).

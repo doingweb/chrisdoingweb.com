@@ -1,8 +1,10 @@
 ---
 title: Markdown syntax
 author: John Gruber
-date: 2012-02-02
-template: article.html
+date: 2012-02-02 12:00:00 -8
+summary: A giant tutorial on Markdown.
+categories:
+- From Wintersmith
 ---
 
 Full markdown syntax taken from John Gruber's [Daring Fireball](http://daringfireball.net/projects/markdown/syntax).
