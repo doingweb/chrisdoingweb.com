@@ -53,7 +53,6 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-        flatten: true,
         layoutdir: '<%= paths.templates %>/layouts',
         layout: 'site.hbs',
         partials: '<%= paths.templates %>/partials/*.hbs',
@@ -75,12 +74,31 @@ module.exports = function(grunt) {
         options: {
           layout: 'article.hbs'
         },
-        src: '<%= paths.content %>/articles/**/*.{md,hbs}',
-        dest: '<%= paths.dist %>/articles/'
+        files: [{
+          expand: true,
+          cwd: '<%= paths.content %>/articles/',
+          src: '**/*.{md,hbs}',
+          dest: '<%= paths.dist %>/articles/'
+        }]
       },
       root: {
-        src: '<%= paths.content %>/*.hbs',
-        dest: '<%= paths.dist %>/'
+        files: [{
+          expand: true,
+          cwd: '<%= paths.content %>/',
+          src: '*.hbs',
+          dest: '<%= paths.dist %>/'
+        }]
+      }
+    },
+
+    imagemin: {
+      images: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.content %>/images/',
+          src: '**/*.{png,jpg,gif}',
+          dest: '<%= paths.assets %>/images/'
+        }]
       }
     },
 
@@ -136,7 +154,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
 		// 'modernizr',
-    'assemble'
+    'assemble',
+    'imagemin'
 		// 'replace'
   ]);
 
