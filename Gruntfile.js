@@ -11,7 +11,8 @@ module.exports = function(grunt) {
       assets: '<%= paths.dist %>/assets',
       content: '<%= paths.src %>/content',
       data: '<%= paths.src %>/data',
-      templates: '<%= paths.src %>/templates'
+      templates: '<%= paths.src %>/templates',
+      bower: 'bower_components'
     },
 
 		credentials: grunt.file.readJSON('credentials.json'),
@@ -103,8 +104,10 @@ module.exports = function(grunt) {
     },
 
 		modernizr: {
-			devFile: 'bower_components/modernizr/modernizr.js',
-			outputFile: 'src/js/modernizr.js'
+      dist: {
+        devFile: '<%= paths.bower %>/modernizr/modernizr.js',
+        outputFile: '<%= paths.assets %>/js/modernizr.js'
+      }
 		},
 
     clean: ['<%= paths.dist %>/**'],
@@ -153,10 +156,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean',
-		// 'modernizr',
     'assemble',
+    'modernizr',
     'imagemin'
-		// 'replace'
+    // 'replace'
   ]);
 
   grunt.registerTask('server', [
