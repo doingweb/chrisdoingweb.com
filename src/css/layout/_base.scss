@@ -1,0 +1,15 @@
+main {
+	@include grid-row;
+}
+
+article {
+	@include grid-column(12);
+}
+
+footer {
+	@include grid-column(12);
+}
+
+.about-me {
+	@include grid-column(12);
+}

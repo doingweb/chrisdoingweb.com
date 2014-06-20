@@ -117,7 +117,8 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          includePaths: ['<%= paths.bower %>']
+          includePaths: ['<%= paths.bower %>'],
+          sourceMap: true
         },
         files: {
           '<%= paths.assets %>/css/site.css': '<%= paths.src %>/css/site.scss'

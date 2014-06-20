@@ -1,11 +1,23 @@
-body > header {
-	background: #eee;
+code {
+	font-size: 0.8rem;
 }
 
-body > footer .photo {
+.about-me {
+	margin-top: $paragraph-margin-bottom;
+	margin-bottom: $paragraph-margin-bottom;
 	background: $secondary-color;
+	text-align: center;
 
-	& img {
-		border-radius: 50%;
+	.photo {
+		margin: $paragraph-margin-bottom 0;
+
+		img {
+			border-radius: 50%;
+		}
+	}
+
+	.contact {
+		list-style: none;
+		margin-left: 0;
 	}
 }

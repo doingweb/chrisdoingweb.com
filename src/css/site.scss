@@ -2,10 +2,10 @@
 
 @import "foundation-settings";
 @import "foundation/scss/normalize";
-@import "foundation-parts";
+@import "foundation-components";
 
 @import "highlightjs-scss/styles/tomorrow";
 
-@import "layout";
+@import "layout/index";
 
 @import "styles";
