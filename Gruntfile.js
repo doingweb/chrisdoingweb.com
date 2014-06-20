@@ -22,6 +22,10 @@ module.exports = function(grunt) {
         files: ['<%= paths.src %>/{content,data,templates}/**/*.{md,hbs,yml}'],
         tasks: ['assemble']
       },
+      sass: {
+        files: ['<%= paths.src %>/css/**/*.scss'],
+        tasks: ['sass']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -110,6 +114,17 @@ module.exports = function(grunt) {
       }
 		},
 
+    sass: {
+      dist: {
+        options: {
+          includePaths: ['<%= paths.bower %>']
+        },
+        files: {
+          '<%= paths.assets %>/css/site.css': '<%= paths.src %>/css/site.scss'
+        }
+      }
+    },
+
     clean: ['<%= paths.dist %>/**'],
 
 		replace: {
@@ -158,7 +173,8 @@ module.exports = function(grunt) {
     'clean',
     'assemble',
     'modernizr',
-    'imagemin'
+    'imagemin',
+    'sass'
     // 'replace'
   ]);
 
