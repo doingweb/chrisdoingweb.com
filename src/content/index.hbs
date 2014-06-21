@@ -1,26 +1,13 @@
 ---
 title: Home
+layout: false
 ---
-{{#each article}}
-  <article>
-    <header>
-      <h1><a href="{{basename}}">{{data.title}}</a></h1>
-      <p class="date">{{moment data.date format='MMMM DD, YYYY'}}</p>
-    </header>
-    <section class="content">
-      {{md src}}
-      <a href="{{basename}}">more</a>
-    </section>
-  </article>
-{{/each}}
 
-<!-- <nav>
-  {{#if previous}}
-    <a href="{{previous.path}}">Newer</a>
-  {{else}}
-    <a href="/archive/">Archives</a>
-  {{/if}}
-  {{#if next}}
-    <a href="{{next.path}}">Next page</a>
-  {{/if}}
-</nav> -->
+{{#extend "site"}}
+  {{#content "styles" mode="append"}}
+    <link rel="stylesheet" href="{{assets}}/css/home.css" media="screen">
+  {{/content}}
+  {{#content "body"}}
+    <p>This is my homepage. It is different.</p>
+  {{/content}}
+{{/extend}}

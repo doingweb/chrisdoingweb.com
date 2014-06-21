@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       options: {
         layoutdir: '<%= paths.templates %>/layouts',
         layout: 'site.hbs',
-        partials: '<%= paths.templates %>/partials/*.hbs',
+        partials: ['<%= paths.templates %>/partials/*.hbs', '<%= paths.templates %>/layouts/*.hbs'],
         assets: '<%= paths.assets %>',
         data: '<%= paths.data %>/*.{json,yml}',
         helpers: ['<%= paths.templates %>/helpers/*.js', 'helper-moment'],
@@ -126,6 +126,15 @@ module.exports = function(grunt) {
       }
     },
 
+    concurrent: {
+      assetsandcontent: [
+        'modernizr',
+        'imagemin',
+        'sass',
+        'htmlmin'
+      ]
+    },
+
     clean: ['<%= paths.dist %>/**'],
 
 		replace: {
@@ -146,6 +155,21 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= paths.dist %>/',
+          src: '**/*.html',
+          dest: '<%= paths.dist %>'
+        }]
+      }
+    },
 
 		s3: {
 			options: {
@@ -173,9 +197,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'clean',
     'assemble',
-    'modernizr',
-    'imagemin',
-    'sass'
+    'concurrent:assetsandcontent'
     // 'replace'
   ]);
 
