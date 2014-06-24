@@ -1,16 +1,7 @@
 ---
 layout: site.hbs
 ---
-<article>
-  <header>
-    <h1>{{page.data.title}}</h1>
-    <p class="date">{{moment page.data.date format='MMMM DD, YYYY'}}</p>
-  </header>
-  <section class="content">
-    {{#markdown}}
-      {{> body }}
-    {{/markdown}}
-  </section>
-</article>
+
+{{> article pagination.index }}
 
 <!-- TODO: Navigation between articles. -->

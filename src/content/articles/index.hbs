@@ -2,17 +2,9 @@
 title: Articles
 layout: site.hbs
 ---
-<ol>
-  {{#each pages}}
-    {{#isnt basename 'index'}}
-      <li>
-        <article>
-          <h1><a href="{{basename}}">{{data.title}}</a></h1>
-          {{#if data.summary}}
-            <p>{{data.summary}}</p>
-          {{/if}}
-        </article>
-      </li>
-    {{/isnt}}
-  {{/each}}
-</ol>
+
+{{#each pages}}
+  {{#isnt basename 'index'}}
+    {{> article }}
+  {{/isnt}}
+{{/each}}

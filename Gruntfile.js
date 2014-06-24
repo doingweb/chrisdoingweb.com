@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       options: {
         layoutdir: '<%= paths.templates %>/layouts',
         layout: 'site.hbs',
-        partials: ['<%= paths.templates %>/partials/*.hbs', '<%= paths.templates %>/layouts/*.hbs'],
+        partials: '<%= paths.templates %>/partials/*.hbs',
         assets: '<%= paths.assets %>',
         data: '<%= paths.data %>/*.{json,yml}',
         helpers: ['<%= paths.templates %>/helpers/*.js', 'helper-moment'],
@@ -87,6 +87,9 @@ module.exports = function(grunt) {
         }]
       },
       root: {
+        options: {
+          partials: '<%= paths.templates %>/layouts/*.hbs'
+        },
         files: [{
           expand: true,
           cwd: '<%= paths.content %>/',
@@ -121,7 +124,8 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: {
-          '<%= paths.assets %>/css/site.css': '<%= paths.src %>/css/site.scss'
+          '<%= paths.assets %>/css/site.css': '<%= paths.src %>/css/site.scss',
+          '<%= paths.assets %>/css/home.css': '<%= paths.src %>/css/home.scss'
         }
       }
     },
