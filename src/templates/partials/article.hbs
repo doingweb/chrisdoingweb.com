@@ -3,7 +3,7 @@
     <h1>{{data.title}}</h1>
     <div class="info">
       <div class="date">{{moment data.date format="MMMM DD, YYYY"}}</div>
-      <div class="permalink"><a href="{{relativeLink}}">link</a></div>
+      <div class="permalink"><a href="{{slugify relativeLink}}">permalink</a></div>
     </div>
   </header>
   <section class="content">
