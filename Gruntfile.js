@@ -77,7 +77,8 @@ module.exports = function(grunt) {
       },
       articles: {
         options: {
-          layout: 'article.hbs'
+          layout: 'article.hbs',
+          plugins: ['assemble-contrib-permalinks', '<%= paths.src %>/plugins/articles-without-index.js']
         },
         files: [{
           expand: true,

@@ -3,8 +3,12 @@ title: Articles
 layout: site.hbs
 ---
 
-{{#each pages}}
-  {{#isnt basename 'index'}}
-    {{> article }}
-  {{/isnt}}
+<!-- {{#markdown}}
+  ```json
+  {{{json this}}}
+  ```
+{{/markdown}} -->
+
+{{#each articles}}
+  {{> article }}
 {{/each}}
