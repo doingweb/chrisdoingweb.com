@@ -32,9 +32,9 @@ module.exports = function(grunt) {
         },
         files: [
           '<%= paths.dist %>/**/*.html',
-          '<%= paths.assets %>/{,*/}*.css',
-          '<%= paths.assets %>/{,*/}*.js',
-          '<%= paths.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= paths.assets %>/css/{,*/}*.css',
+          '<%= paths.assets %>/js/{,*/}*.js',
+          '<%= paths.assets %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -88,9 +88,6 @@ module.exports = function(grunt) {
         }]
       },
       root: {
-        options: {
-          partials: '<%= paths.templates %>/layouts/*.hbs'
-        },
         files: [{
           expand: true,
           cwd: '<%= paths.content %>/',

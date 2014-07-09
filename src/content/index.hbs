@@ -1,13 +1,12 @@
 ---
 title: Home
-layout: false
+styles: home.css
 ---
 
-{{#extend "site"}}
-  {{#content "styles" mode="append"}}
-    <link rel="stylesheet" href="{{assets}}/css/home.css" media="screen">
-  {{/content}}
-  {{#content "body"}}
-    <p>This is my homepage. It is different.</p>
-  {{/content}}
-{{/extend}}
+<section class="bio small-12 columns">
+  <h1>{{site.tagline}}</h1>
+  <div class="">
+    <h2></h2>
+    <p></p>
+  </div>
+</section>
