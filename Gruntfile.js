@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 
     watch: {
       assemble: {
-        files: ['<%= paths.src %>/{content,data,templates}/**/*.{md,hbs,yml}'],
+        files: ['<%= paths.src %>/{content,data,templates}/**/*.{md,hbs,yml,json}'],
         tasks: ['assemble']
       },
       sass: {
@@ -129,15 +129,54 @@ module.exports = function(grunt) {
     },
 
     concurrent: {
-      assetsandcontent: [
+      assets: [
+        'copy:bower',
         'modernizr',
         'imagemin',
-        'sass',
-        'htmlmin'
+        'sass'
       ]
     },
 
-    clean: ['<%= paths.dist %>/**'],
+    clean: {
+      dist: '<%= paths.dist %>/**',
+      tmp: '<%= paths.tmp %>',
+      bowerAssets: '<%= paths.assets %>/bower_components',
+      cssMaps: '<%= paths.assets %>/css/*.map'
+    },
+
+		useminPrepare: {
+			home: '<%= paths.dist %>/index.html',
+			options: {
+				dest: '<%= paths.dist %>'
+			}
+		},
+
+    filerev: {
+      css: {
+        src: '<%= paths.assets %>/css/*.css'
+      },
+      js: {
+        src: '<%= paths.assets %>/js/*.js'
+      }
+    },
+
+		usemin: {
+      html: ['<%= paths.dist %>/**/*.html']
+		},
+
+    copy: {
+      bower: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.bower %>/',
+          src: [
+            'jquery/**',
+            'foundation/**'
+          ],
+          dest: '<%= paths.assets %>/bower_components/'
+        }]
+      }
+    },
 
 		replace: {
 			analytics: {
@@ -196,20 +235,37 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('assemble');
 	require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('build', [
-    'clean',
+  grunt.registerTask('build:dist', [
+    'clean:dist',
+    'clean:tmp',
     'assemble',
-    'concurrent:assetsandcontent'
+    'concurrent:assets',
+    'useminPrepare',
+    'concat',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin',
+    // 'replace'
+    'clean:bowerAssets',
+    'clean:cssMaps'
+  ]);
+
+  grunt.registerTask('build:server', [
+    'clean:dist',
+    'clean:tmp',
+    'assemble',
+    'concurrent:assets'
     // 'replace'
   ]);
 
   grunt.registerTask('server', [
-    'build',
+    'build:server',
     'connect',
     'watch'
   ]);
 
   grunt.registerTask('default', [
-    'build'
+    'build:dist'
   ]);
 };
