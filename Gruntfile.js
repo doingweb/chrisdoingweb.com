@@ -24,7 +24,7 @@ module.exports = function(grunt) {
       },
       sass: {
         files: ['<%= paths.src %>/css/**/*.scss'],
-        tasks: ['sass']
+        tasks: ['sass:server']
       },
       livereload: {
         options: {
@@ -116,9 +116,20 @@ module.exports = function(grunt) {
 		},
 
     sass: {
+      options: {
+        includePaths: ['<%= paths.bower %>']
+      },
       dist: {
         options: {
-          includePaths: ['<%= paths.bower %>'],
+          outputStyle: 'compressed'
+        },
+        files: {
+          '<%= paths.assets %>/css/site.css': '<%= paths.src %>/css/site.scss',
+          '<%= paths.assets %>/css/home.css': '<%= paths.src %>/css/home.scss'
+        }
+      },
+      server: {
+        options: {
           sourceMap: true
         },
         files: {
@@ -133,8 +144,7 @@ module.exports = function(grunt) {
         'copy:bower',
         'copy:js',
         'modernizr',
-        'imagemin',
-        'sass'
+        'imagemin'
       ]
     },
 
@@ -142,8 +152,7 @@ module.exports = function(grunt) {
       dist: '<%= paths.dist %>/**',
       tmp: '<%= paths.tmp %>',
       bowerAssets: '<%= paths.dist %>/bower_components',
-      cssMaps: '<%= paths.assets %>/css/*.map',
-      js: '<%= paths.assets %>/js'
+      js: ['<%= paths.assets %>/js/*', '!<%= paths.assets %>/js/modernizr.js']
     },
 
 		useminPrepare: {
@@ -252,7 +261,11 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('build:dist', [
-    'build:server',
+    'clean:dist',
+    'clean:tmp',
+    'assemble',
+    'concurrent:assets',
+    'sass:dist',
     'useminPrepare',
     'concat',
     'clean:js',
@@ -261,15 +274,15 @@ module.exports = function(grunt) {
     'usemin',
     'cdnify',
     'htmlmin',
-    'clean:bowerAssets',
-    'clean:cssMaps'
+    'clean:bowerAssets'
   ]);
 
   grunt.registerTask('build:server', [
     'clean:dist',
     'clean:tmp',
     'assemble',
-    'concurrent:assets'
+    'concurrent:assets',
+    'sass:server'
     // 'replace'
   ]);
 
