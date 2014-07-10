@@ -131,6 +131,7 @@ module.exports = function(grunt) {
     concurrent: {
       assets: [
         'copy:bower',
+        'copy:js',
         'modernizr',
         'imagemin',
         'sass'
@@ -141,7 +142,8 @@ module.exports = function(grunt) {
       dist: '<%= paths.dist %>/**',
       tmp: '<%= paths.tmp %>',
       bowerAssets: '<%= paths.assets %>/bower_components',
-      cssMaps: '<%= paths.assets %>/css/*.map'
+      cssMaps: '<%= paths.assets %>/css/*.map',
+      js: '<%= paths.assets %>/js'
     },
 
 		useminPrepare: {
@@ -174,6 +176,14 @@ module.exports = function(grunt) {
             'foundation/**'
           ],
           dest: '<%= paths.assets %>/bower_components/'
+        }]
+      },
+      js: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.src %>/js/',
+          src: ['*.js'],
+          dest: '<%= paths.assets %>/js/'
         }]
       }
     },
@@ -236,17 +246,14 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('build:dist', [
-    'clean:dist',
-    'clean:tmp',
-    'assemble',
-    'concurrent:assets',
+    'build:server',
     'useminPrepare',
     'concat',
+    'clean:js',
     'uglify',
     'filerev',
     'usemin',
     'htmlmin',
-    // 'replace'
     'clean:bowerAssets',
     'clean:cssMaps'
   ]);
