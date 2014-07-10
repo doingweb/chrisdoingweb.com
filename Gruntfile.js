@@ -141,7 +141,7 @@ module.exports = function(grunt) {
     clean: {
       dist: '<%= paths.dist %>/**',
       tmp: '<%= paths.tmp %>',
-      bowerAssets: '<%= paths.assets %>/bower_components',
+      bowerAssets: '<%= paths.dist %>/bower_components',
       cssMaps: '<%= paths.assets %>/css/*.map',
       js: '<%= paths.assets %>/js'
     },
@@ -175,7 +175,7 @@ module.exports = function(grunt) {
             'jquery/**',
             'foundation/**'
           ],
-          dest: '<%= paths.assets %>/bower_components/'
+          dest: '<%= paths.dist %>/bower_components/'
         }]
       },
       js: {
@@ -206,6 +206,12 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+
+    cdnify: {
+      dist: {
+        html: ['<%= paths.dist %>/**/*.html']
+      }
+    },
 
     htmlmin: {
       dist: {
@@ -253,6 +259,7 @@ module.exports = function(grunt) {
     'uglify',
     'filerev',
     'usemin',
+    'cdnify',
     'htmlmin',
     'clean:bowerAssets',
     'clean:cssMaps'
