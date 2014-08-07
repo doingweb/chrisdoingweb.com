@@ -1,1 +1,44 @@
+@import "foundation/scss/foundation/functions";
 @import "foundation-settings";
+
+.bio {
+  .greeting, .tagline {
+    text-align: center;
+  }
+
+  .greeting {
+    font-size: 36vmin;
+    white-space: nowrap;
+
+    .period {
+      width: 0.1em;
+      vertical-align: baseline;
+    }
+  }
+
+  .tagline {
+    margin: $paragraph-margin-bottom 0;
+    padding: $header-line-height * 0.5em;
+    font-size: 1.75rem;
+    @media #{$medium-up} {
+      font-size: $h1-font-size;
+    }
+    background: $primary-color;
+    color: $body-bg;
+  }
+
+  .intro {
+    font-size: 1.25rem;
+    @media #{$medium-up} {
+      font-size: 2em;
+    }
+  }
+
+  .philosophy {
+    .panel {
+      background: transparent;
+      border: 0;
+      border-left: 1px dotted $primary-color;
+    }
+  }
+}

@@ -1,3 +1,9 @@
+h1, h2, h3, h4, h5, h6 {
+	em {
+		font-style: normal;
+	}
+}
+
 code {
 	font-size: 0.8rem;
 }
@@ -8,16 +14,12 @@ code {
 	background: $secondary-color;
 	text-align: center;
 
-	.photo {
-		margin: $paragraph-margin-bottom 0;
-
-		img {
-			border-radius: 50%;
-		}
-	}
-
 	.contact {
 		list-style: none;
 		margin-left: 0;
 	}
+}
+
+img.portrait {
+	border-radius: 50%;
 }

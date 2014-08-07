@@ -6,7 +6,7 @@
 		<title>{{#if title}}{{title}} | {{/if}}{{site.description}}</title>
 		<meta name="description" content="{{site.description}}">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Roboto:300,300italic,500,500italic|Vollkorn:400italic" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Roboto:300,300italic,500,500italic|Vollkorn:400,400italic" rel="stylesheet" type="text/css">
 		<link href="{{assets}}/css/site.css" rel="stylesheet" type="text/css">
 		{{#if pageCss}}<link href="{{assets}}/css/{{pageCss}}" rel="stylesheet" type="text/css">{{/if}}
 		<script src="{{assets}}/js/modernizr.js"></script>
@@ -14,11 +14,9 @@
 	<body>
 		{{> navigation }}
 		{{> browse-happy }}
-		<main class="row">
+		<main>
 			{{> body }}
 		</main>
-		{{> about-me }}
-		{{> site-footer }}
 		{{> scripts }}
 		{{> google-analytics }}
 	</body>

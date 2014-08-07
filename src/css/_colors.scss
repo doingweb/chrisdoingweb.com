@@ -1,0 +1,11 @@
+$primary-color: #008CBA;
+$secondary-color: #e7e7e7;
+
+$accent-color: adjust-hue($primary-color, -120deg);
+$pop-color: scale-color(adjust-hue($primary-color, 160deg), $saturation: -50%, $lightness: 15%);
+
+
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
