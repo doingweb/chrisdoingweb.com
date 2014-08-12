@@ -1,7 +1,11 @@
-@import "foundation/scss/foundation/components/grid";
+@import
+  "foundation/scss/foundation/components/grid",
+  "foundation/scss/foundation/components/block-grid",
+  "foundation/scss/foundation/components/panels",
+  "foundation/scss/foundation/components/top-bar",
+  "foundation/scss/foundation/components/type";
 // 	"foundation/components/accordion",
 // 	"foundation/components/alert-boxes",
-@import "foundation/scss/foundation/components/block-grid";
 // 	"foundation/components/breadcrumbs",
 // 	"foundation/components/button-groups",
 // 	"foundation/components/buttons",
@@ -17,7 +21,6 @@
 // 	"foundation/components/magellan",
 // 	"foundation/components/orbit",
 // 	"foundation/components/pagination",
-@import "foundation/scss/foundation/components/panels";
 // 	"foundation/components/pricing-tables",
 // 	"foundation/components/progress-bars",
 // 	"foundation/components/range-slider",
@@ -30,7 +33,5 @@
 // 	"foundation/components/tabs",
 // 	"foundation/components/thumbs",
 // 	"foundation/components/tooltips",
-@import "foundation/scss/foundation/components/top-bar";
-@import "foundation/scss/foundation/components/type";
 // 	"foundation/components/offcanvas",
-// 	"foundation/components/visibility";
+// 	"foundation/components/visibility",

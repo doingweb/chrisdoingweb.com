@@ -1,12 +1,11 @@
-@charset "UTF-8";
+@import
+  "foundation/scss/foundation/functions",
+  "foundation-settings",
+  "foundation/scss/normalize",
+  "foundation-components",
 
-@import "foundation/scss/foundation/functions";
-@import "foundation-settings";
-@import "foundation/scss/normalize";
-@import "foundation-components";
+  "highlightjs-scss/styles/tomorrow",
 
-@import "highlightjs-scss/styles/tomorrow";
+  "browsehappy",
 
-@import "browsehappy";
-
-@import "styles";
+  "styles";

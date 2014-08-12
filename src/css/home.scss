@@ -2,12 +2,15 @@
 @import "foundation-settings";
 
 .bio {
-  .greeting, .tagline {
+  .greeting,
+  .tagline {
     text-align: center;
   }
 
   .greeting {
     font-size: 36vmin;
+    line-height: 1;
+    margin: 0.5em 0;
     white-space: nowrap;
 
     .period {
@@ -25,13 +28,6 @@
     }
     background: $primary-color;
     color: $body-bg;
-  }
-
-  .intro {
-    font-size: 1.25rem;
-    @media #{$medium-up} {
-      font-size: 2em;
-    }
   }
 
   .philosophy {
