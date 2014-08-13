@@ -1,0 +1,20 @@
+h1, h2, h3, h4, h5, h6 {
+
+	// Headings are italicized, so emphasis is the opposite.
+	em {
+		font-style: normal;
+	}
+
+	// Keep the header color.
+	a {
+		color: inherit;
+	}
+}
+
+code {
+	font-size: 0.8rem;
+}
+
+img.portrait {
+	border-radius: 50%;
+}

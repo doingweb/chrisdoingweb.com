@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= paths.content %>/',
-          src: '*.hbs',
+          src: '*.{md,hbs}',
           dest: '<%= paths.dist %>/'
         }]
       }

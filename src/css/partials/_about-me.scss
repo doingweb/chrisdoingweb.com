@@ -1,0 +1,11 @@
+.about-me {
+  margin-top: $paragraph-margin-bottom;
+  margin-bottom: $paragraph-margin-bottom;
+  background: $secondary-color;
+  text-align: center;
+
+  .contact {
+    list-style: none;
+    margin-left: 0;
+  }
+}

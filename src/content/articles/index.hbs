@@ -3,6 +3,8 @@ title: Articles
 layout: site.hbs
 ---
 
-{{#each articles}}
-  {{> article }}
-{{/each}}
+<div itemtype="http://schema.org/Blog">
+  {{#each articles}}
+    {{> article }}
+  {{/each}}
+</div>
