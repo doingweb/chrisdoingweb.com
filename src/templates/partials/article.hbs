@@ -2,7 +2,7 @@
   <header class="small-12 columns">
     <h1 itemprop="name"><a href="{{slugify relativeLink}}" itemprop="url">{{data.title}}</a></h1>
     <div class="info">
-      <time class="date" itemprop="datePublished">{{moment data.date format="MMMM DD, YYYY"}}</time>
+      <time datetime="{{moment data.date format="YYYY-MM-DD"}}" class="date" itemprop="datePublished">{{moment data.date format="MMMM DD, YYYY"}}</time>
     </div>
   </header>
   <section class="content small-12 columns" itemprop="articleBody">

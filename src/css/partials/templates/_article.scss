@@ -1,0 +1,11 @@
+article.post {
+  header {
+    margin-bottom: 1rem;
+  }
+
+  .info {
+    font-size: 0.75rem;
+    text-align: right;
+    color: darken($secondary-color, 25%);
+  }
+}

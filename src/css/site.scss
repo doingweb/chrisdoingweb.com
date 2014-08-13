@@ -1,14 +1,14 @@
 @import
   "foundation/scss/foundation/functions",
-  "foundation-settings",
+  "partials/foundation-settings",
   "foundation/scss/normalize",
-  "foundation-components",
+  "partials/foundation-components",
 
   "highlightjs-scss/styles/tomorrow",
 
-  "partials/browsehappy",
-  "partials/about-me",
-  "partials/site-footer",
-  "partials/article",
+  "partials/templates/browsehappy",
+  "partials/templates/about-me",
+  "partials/templates/site-footer",
+  "partials/templates/article",
 
-  "typography";
+  "partials/typography";
