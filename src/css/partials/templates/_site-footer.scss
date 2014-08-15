@@ -1,13 +1,35 @@
 body > footer {
   clear: both;
-  margin-top: 2rem;
-  padding: 1rem 0;
+  margin-top: $paragraph-margin-bottom;
+  padding: $paragraph-margin-bottom 0;
   border-top: 1px dotted $primary-color;
   background: scale-color($primary-color, $lightness: 95%, $saturation: -75%);
   text-align: center;
 
+  p,
+  .contact { // Can/should we just asterisk here?
+    font-size: $small-font-size;
+    color: $small-font-color;
+  }
+
   p {
-    font-size: 0.75rem;
     margin-bottom: 0;
+  }
+
+  .contact {
+    margin: 0 0 $paragraph-margin-bottom 0;
+    list-style: none;
+
+    li {
+      display: inline;
+
+      &:before {
+        content: '⋅';
+      }
+
+      &:first-child:before {
+        content: none;
+      }
+    }
   }
 }

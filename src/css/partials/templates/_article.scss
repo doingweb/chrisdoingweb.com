@@ -4,8 +4,8 @@ article.post {
   }
 
   .info {
-    font-size: 0.75rem;
+    font-size: $small-font-size;
+    color: $small-font-color;
     text-align: right;
-    color: darken($secondary-color, 25%);
   }
 }
