@@ -2,10 +2,12 @@
 layout: site.hbs
 ---
 
-<main>
-  {{> article pagination.index }}
-</main>
-<!-- TODO: Disqus -->
-<!-- TODO: Related posts? Article list? -->
+<div class="row">
+  <main class="small-12 large-9 column">
+    {{> article pagination.index }}
+  </main>
+  <!-- TODO: Disqus -->
+  <!-- TODO: Related posts? Article list? -->
 
-{{> about-me }}
+  {{> about-me }}
+</div>
