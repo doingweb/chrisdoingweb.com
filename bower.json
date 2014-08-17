@@ -8,6 +8,7 @@
   "dependencies": {
     "foundation": "~5",
     "highlightjs-scss": "~7",
-    "jquery": "~2"
+    "jquery": "~2",
+    "monosocialiconsfont": "*"
   }
 }

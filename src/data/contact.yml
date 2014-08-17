@@ -1,11 +1,16 @@
 links:
-  - title: Twitter
-    url: https://twitter.com/doingweb
   - title: GitHub
     url: https://github.com/doingweb
+    icon: githubalt
+  - title: Twitter
+    url: https://twitter.com/doingweb
+    icon: twitterbird
   - title: LinkedIn
     url: http://www.linkedin.com/in/chrisantes
+    icon: linkedin
   - title: Reddit
     url: http://www.reddit.com/user/doingweb
+    icon: reddit
   - title: StackOverflow
     url: http://stackoverflow.com/users/467354/doingweb
+    icon: stackoverflow

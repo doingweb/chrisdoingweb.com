@@ -1,11 +1,30 @@
 .about-me {
   margin-top: $paragraph-margin-bottom;
   margin-bottom: $paragraph-margin-bottom;
-  background: $secondary-color;
-  text-align: center;
+
+  .photo {
+    margin-bottom: $paragraph-margin-bottom;
+    text-align: center;
+
+    & > img {
+      box-shadow: 1px 1px 5px black;
+    }
+  }
 
   .contact {
     list-style: none;
     margin-left: 0;
+    font-size: 1.25rem;
+
+    a:before {
+      font-family: 'Mono Social Icons Font';
+      text-rendering: optimizeLegibility;
+      font-smoothing: antialiased;
+
+      content: attr(data-icon);
+      margin-right: 0.3em;
+      font-size: 130%;
+      color: darken($secondary-color, 25%);
+    }
   }
 }

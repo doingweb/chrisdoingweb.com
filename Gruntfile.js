@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         partials: '<%= paths.templates %>/partials/*.hbs',
         assets: '<%= paths.assets %>',
         data: '<%= paths.data %>/*.{json,yml}',
-        helpers: ['<%= paths.templates %>/helpers/*.js', 'helper-moment'],
+        helpers: ['<%= paths.templates %>/helpers/*.js', 'helper-moment', 'handlebars-helper-twitter'],
         marked: {
           gfm: true
         },
@@ -182,7 +182,8 @@ module.exports = function(grunt) {
           cwd: '<%= paths.bower %>/',
           src: [
             'jquery/**',
-            'foundation/**'
+            'foundation/**',
+            'monosocialiconsfont/**'
           ],
           dest: '<%= paths.dist %>/bower_components/'
         }]
