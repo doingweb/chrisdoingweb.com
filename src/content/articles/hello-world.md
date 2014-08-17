@@ -5,8 +5,9 @@ author: the-wintersmith
 date: 2013-04-30 12:00:00 -7
 categories:
 - From Wintersmith
-lead: <em>Every</em> blog post should start with a lead. It's just polite.
 ---
+
+<p class="lead">*Every* blog post should start with a lead. It's just polite.</p>
 
 Welcome to your new blog! This is the default blog template with RSS, pagination and an archive. There are other templates available -- run `wintersmith new --help` to list them.
 
