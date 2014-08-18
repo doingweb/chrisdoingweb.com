@@ -238,22 +238,44 @@ module.exports = function(grunt) {
       }
     },
 
-		s3: {
-			options: {
-				bucket: '<%= credentials.aws.bucket %>',
-				key: '<%= credentials.aws.key %>',
-				secret: '<%= credentials.aws.secret %>',
-				region: '<%= credentials.aws.region %>',
-				gzip: true,
-				access: 'public-read'
-			},
-			deploy: {
-				upload: grunt.file.expand({ cwd: 'build', filter: 'isFile' }, '**').map(function (file) {
-					return {
-						src: 'build/' + file,
-						dest: file
-					}
-				})
+    compress: {
+      dist: {
+        options: {
+          mode: 'gzip'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= paths.dist %>/',
+          src: ['**/*.{html,css,js}'],
+          dest: '<%= paths.tmp %>/gzip/'
+        }]
+      }
+    },
+
+    aws_s3: {
+      public: {
+        options: {
+          bucket: '<%= credentials.aws.bucket %>',
+          region: '<%= credentials.aws.region %>'
+          accessKeyId: '<%= credentials.aws.key %>',
+          secretAccessKey: '<%= credentials.aws.secret %>'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= paths.tmp %>/gzip/',
+            src: ['**/*.{html,css,js}'],
+            dest: './',
+            params: {
+              'ContentEncoding': 'gzip'
+            }
+          }, {
+            expand: true,
+            cwd: '<%= paths.dist %>/',
+            src: ['**', '!**/*.{html,css,js}'],
+            dest: './'
+          }
+        ]
 			}
 		}
 	});
@@ -291,6 +313,12 @@ module.exports = function(grunt) {
     'build:server',
     'connect',
     'watch'
+  ]);
+
+  grunt.registerTask('deploy:next', [
+    'build:dist',
+    'compress',
+    'aws_s3:next'
   ]);
 
   grunt.registerTask('default', [
