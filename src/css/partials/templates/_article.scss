@@ -6,6 +6,9 @@ article.post {
   .info {
     font-size: $small-font-size;
     color: $small-font-color;
-    text-align: right;
+    text-align: left;
+
+    border-left: 1px dotted $primary-color;
+    padding-left: $small-font-size;
   }
 }
