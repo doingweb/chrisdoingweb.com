@@ -1,7 +1,7 @@
 body > footer {
   clear: both;
   margin-top: $paragraph-margin-bottom;
-  padding: $paragraph-margin-bottom 0;
+  padding: $paragraph-margin-bottom;
   border-top: 1px dotted $primary-color;
   background: scale-color($primary-color, $lightness: 95%, $saturation: -75%);
   text-align: center;
@@ -23,11 +23,11 @@ body > footer {
     li {
       display: inline;
 
-      &:before {
+      &::before {
         content: '⋅';
       }
 
-      &:first-child:before {
+      &:first-child::before {
         content: none;
       }
     }
