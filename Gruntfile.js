@@ -15,6 +15,13 @@ module.exports = function(grunt) {
       bower: 'bower_components'
     },
 
+    config: {
+      ext: {
+        fonts: 'eot,otf,svg,ttf,woff',
+        compressable: 'html,css,js,eot,otf,svg,ttf'
+      }
+    },
+
 		credentials: grunt.file.readJSON('credentials.json'),
 
     watch: {
@@ -143,6 +150,7 @@ module.exports = function(grunt) {
       assets: [
         'copy:bower',
         'copy:js',
+        'copy:fonts',
         'modernizr',
         'imagemin'
       ]
@@ -182,8 +190,7 @@ module.exports = function(grunt) {
           cwd: '<%= paths.bower %>/',
           src: [
             'jquery/**',
-            'foundation/**',
-            'monosocialiconsfont/**'
+            'foundation/**'
           ],
           dest: '<%= paths.dist %>/bower_components/'
         }]
@@ -194,6 +201,16 @@ module.exports = function(grunt) {
           cwd: '<%= paths.src %>/js/',
           src: ['*.js'],
           dest: '<%= paths.assets %>/js/'
+        }]
+      },
+      fonts: {
+        files: [{
+          expand: true,
+          cwd: '<%= paths.bower %>/',
+          src: [
+            'monosocialiconsfont/*.{<%= config.ext.fonts %>}'
+          ],
+          dest: '<%= paths.assets %>/css/fonts/'
         }]
       }
     },
@@ -246,7 +263,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= paths.dist %>/',
-          src: ['**/*.{html,css,js}'],
+          src: ['**/*.{<%= config.ext.compressable %>}'],
           dest: '<%= paths.tmp %>/gzip/'
         }]
       }
@@ -256,7 +273,7 @@ module.exports = function(grunt) {
       public: {
         options: {
           bucket: '<%= credentials.aws.bucket %>',
-          region: '<%= credentials.aws.region %>'
+          region: '<%= credentials.aws.region %>',
           accessKeyId: '<%= credentials.aws.key %>',
           secretAccessKey: '<%= credentials.aws.secret %>'
         },
@@ -264,7 +281,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= paths.tmp %>/gzip/',
-            src: ['**/*.{html,css,js}'],
+            src: ['**/*.{<%= config.ext.compressable %>}'],
             dest: './',
             params: {
               'ContentEncoding': 'gzip'
@@ -272,7 +289,7 @@ module.exports = function(grunt) {
           }, {
             expand: true,
             cwd: '<%= paths.dist %>/',
-            src: ['**', '!**/*.{html,css,js}'],
+            src: ['**', '!**/*.{<%= config.ext.compressable %>}'],
             dest: './'
           }
         ]
@@ -306,7 +323,6 @@ module.exports = function(grunt) {
     'assemble',
     'concurrent:assets',
     'sass:server'
-    // 'replace'
   ]);
 
   grunt.registerTask('server', [
@@ -318,7 +334,7 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy:next', [
     'build:dist',
     'compress',
-    'aws_s3:next'
+    'aws_s3:public'
   ]);
 
   grunt.registerTask('default', [
