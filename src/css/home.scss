@@ -1,5 +1,6 @@
-@import "foundation/scss/foundation/functions";
+$include-html-classes: false;
 @import "partials/foundation-settings";
+@import "foundation/scss/foundation/components/type";
 
 .bio {
   .greeting,
@@ -20,7 +21,7 @@
   }
 
   .tagline {
-    margin: $paragraph-margin-bottom 0;
+    margin: 1em 0;
     padding: $header-line-height * 0.5em;
     font-size: 1.75rem;
     @media #{$medium-up} {
@@ -28,6 +29,13 @@
     }
     background: $primary-color;
     color: $body-bg;
+  }
+
+  .lead {
+    margin-bottom: 2em;
+    @media #{$medium-up} {
+      font-size: $h2-font-size;
+    }
   }
 
   .philosophy {
