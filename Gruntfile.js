@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     config: {
       ext: {
         fonts: 'eot,otf,svg,ttf,woff',
-        compressable: 'html,css,js,eot,otf,svg,ttf'
+        compressable: 'html,css,js,txt,eot,otf,svg,ttf'
       }
     },
 
@@ -212,6 +212,11 @@ module.exports = function(grunt) {
           ],
           dest: '<%= paths.assets %>/css/fonts/'
         }]
+      },
+      humans: {
+        files: {
+          '<%= paths.dist %>/humans.txt': '<%= paths.content %>/humans.txt'
+        }
       }
     },
 
@@ -314,7 +319,8 @@ module.exports = function(grunt) {
     'usemin',
     'cdnify',
     'htmlmin',
-    'clean:bowerAssets'
+    'clean:bowerAssets',
+    'copy:humans'
   ]);
 
   grunt.registerTask('build:server', [
@@ -322,7 +328,8 @@ module.exports = function(grunt) {
     'clean:tmp',
     'assemble',
     'concurrent:assets',
-    'sass:server'
+    'sass:server',
+    'copy:humans'
   ]);
 
   grunt.registerTask('server', [
