@@ -220,25 +220,6 @@ module.exports = function(grunt) {
       }
     },
 
-		replace: {
-			analytics: {
-				options: {
-					patterns: [
-						{
-							match: 'googleAnalyticsTrackingID',
-							replacement: '<%= credentials.google.analytics.id %>'
-						}
-					]
-				},
-				files: [
-					{
-						src: ['dist/**/*.html'],
-						dest: './'
-					}
-				]
-			}
-		},
-
     cdnify: {
       dist: {
         html: ['<%= paths.dist %>/**/*.html']
