@@ -20,8 +20,23 @@ pre code {
 	overflow: auto;
 }
 
+img {
+	border-radius: 5px;
+}
+
 img.portrait {
 	border-radius: 50%;
 	width: 75%;
 	max-width: 300px; // Any bigger is just gross.
+}
+
+.gallery figure {
+	margin: {
+		left: 0;
+		right: 0;
+	}
+
+	figcaption {
+		padding-top: 0.25em;
+	}
 }

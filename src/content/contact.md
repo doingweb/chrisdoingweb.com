@@ -3,6 +3,8 @@ title: Contact
 layout: md-page.hbs
 ---
 
+# What's the best way to reach me?
+
 <p class="lead">There are a number of methods for contacting me, some more effective than others.</p>
 
 There's the old standby: [email](mailto:chris@chrisdoingweb.com). As long as Gmail can tell you apart from spam and other mass-mailings, it should work well.
