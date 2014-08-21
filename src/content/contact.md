@@ -1,5 +1,6 @@
 ---
 title: Contact
+description: How to contact Chris
 layout: md-page.hbs
 ---
 

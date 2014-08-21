@@ -1,5 +1,6 @@
 ---
 title: About Chris
+description: Get to know more about Chris
 layout: md-page.hbs
 ---
 
