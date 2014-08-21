@@ -6,21 +6,21 @@ var options = {
 
 
 var plugin = function(params, next) {
-  var articles = [];
+  var posts = [];
 
-  // Get just the articles.
+  // Get just the posts.
   params.context.pages.forEach(function (page) {
-    if (page.basename !== 'index' && page.dirname === 'dist/articles') {
-      articles.push(page);
+    if (page.basename !== 'index' && page.dirname === 'dist/blog') {
+      posts.push(page);
     }
   });
 
   // Sort them by date.
-  articles.sort(function (a, b) {
+  posts.sort(function (a, b) {
     return b.data.date - a.data.date;
   });
 
-  params.context.articles = articles;
+  params.context.posts = posts;
 
   next();
 };

@@ -82,16 +82,16 @@ module.exports = function(grunt) {
           preset: 'pretty'
         }
       },
-      articles: {
+      blog: {
         options: {
-          layout: 'article.hbs',
-          plugins: ['assemble-contrib-permalinks', '<%= paths.src %>/plugins/articles-without-index.js']
+          layout: 'post.hbs',
+          plugins: ['assemble-contrib-permalinks', '<%= paths.src %>/plugins/posts-without-index.js']
         },
         files: [{
           expand: true,
-          cwd: '<%= paths.content %>/articles/',
+          cwd: '<%= paths.content %>/blog/',
           src: '**/*.{md,hbs}',
-          dest: '<%= paths.dist %>/articles/'
+          dest: '<%= paths.dist %>/blog/'
         }]
       },
       root: {
