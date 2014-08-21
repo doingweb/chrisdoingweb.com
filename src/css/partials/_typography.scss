@@ -11,8 +11,16 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-pre code {
+code {
 	font-size: 0.8rem;
+	background: #474949; // These two colors are borrowed from the code style.
+	color: #D1D9E1;
+	padding: 0.15em 0.4em;
+	border-radius: 0.33em;
+	margin: 1px; // Separate from adjacent punctuation, etc.
+}
+
+pre code {
 	padding: 1.5em;
 	margin: 1em 0;
 	border-radius: 0.5rem;
