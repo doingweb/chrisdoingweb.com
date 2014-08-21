@@ -74,7 +74,7 @@ module.exports = function(grunt) {
         marked: {
           gfm: true
         },
-        plugins: ['assemble-middleware-sitemap', 'assemble-contrib-permalinks'],
+        plugins: ['assemble-contrib-permalinks'],
         sitemap: {
           dest: '<%= paths.dist %>/'
         },
