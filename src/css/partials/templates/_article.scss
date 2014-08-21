@@ -1,5 +1,12 @@
 article.post {
   header {
+    & > h1 {
+      font-size: $h1-font-size;
+      @media #{$medium-up} {
+        font-size: $h1-font-size + $h1-font-reduction;
+      }
+    }
+
     margin-bottom: 1rem;
   }
 
@@ -8,7 +15,7 @@ article.post {
     color: $small-font-color;
     text-align: left;
 
-    border-left: 1px dotted $primary-color;
+    border-left: $small-font-size solid $accent-color;
     padding-left: $small-font-size;
   }
 }

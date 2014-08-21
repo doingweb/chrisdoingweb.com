@@ -1,8 +1,7 @@
 $primary-color: #008CBA;
 $secondary-color: #e7e7e7;
 
-$accent-color: adjust-hue($primary-color, -120deg);
-$pop-color: scale-color(adjust-hue($primary-color, 160deg), $saturation: -50%, $lightness: 15%);
+$accent-color: #ff651d;
 
 
 $alert-color: #f04124;
