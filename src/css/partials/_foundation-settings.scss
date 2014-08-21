@@ -151,7 +151,7 @@ $code-font-weight: 400;
 // We use these to style anchors
 // $anchor-text-decoration: none;
 $anchor-font-color: $primary-color;
-$anchor-font-color-hover: scale-color($primary-color, $lightness: -20%);
+$anchor-font-color-hover: scale-color($primary-color, $lightness: -30%);
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -1176,14 +1176,14 @@ $topbar-dropdown-link-bg: $topbar-dropdown-bg;
 
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $anchor-font-color;
-// $topbar-link-color-hover: #fff;
+$topbar-link-color-hover: $anchor-font-color-hover;
 // $topbar-link-color-active: #fff;
 // $topbar-link-color-active-hover: #fff;
 // $topbar-link-weight: normal;
 // $topbar-link-font-size: rem-calc(13);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: scale-color($topbar-dropdown-bg, $lightness: $topbar-link-hover-lightness);
+$topbar-link-bg-hover: $topbar-bg-color;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
