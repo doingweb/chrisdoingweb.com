@@ -319,7 +319,7 @@ module.exports = function(grunt) {
     'watch'
   ]);
 
-  grunt.registerTask('deploy:next', [
+  grunt.registerTask('deploy', [
     'build:dist',
     'compress',
     'aws_s3:public'
