@@ -1,7 +1,7 @@
 ---
 title: About Chris
 description: Get to know more about Chris
-layout: md-page.hbs
+template: page.html
 ---
 
 # So who is this Chris guy?

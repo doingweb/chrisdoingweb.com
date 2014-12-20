@@ -1,0 +1,5 @@
+<ul class="contact">
+  {% for link in contact.links -%}
+    <a href="{{link.url}}" data-icon="{{link.icon}}">{{link.title}}</a>
+  {%- endfor %}
+</ul>

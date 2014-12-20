@@ -1,7 +1,7 @@
 ---
 title: Contact
 description: How to contact Chris
-layout: md-page.hbs
+template: page.html
 ---
 
 # What's the best way to reach me?

@@ -1,0 +1,11 @@
+<article class="post row" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+  <header class="small-12 columns">
+    <h1 itemprop="name"><a href="{{ url }}" itemprop="url">{{ title }}</a></h1>
+    <div class="info">
+      <time datetime="{{ date | date('Y-m-d') }}" class="date" itemprop="datePublished">{{ date | date('m d, Y') }}</time>
+    </div>
+  </header>
+  <section class="content small-12 columns" itemprop="articleBody">
+    {{ contents | safe }}
+  </section>
+</article>
