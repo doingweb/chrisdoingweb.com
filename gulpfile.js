@@ -48,6 +48,7 @@ gulp.task('metalsmith', ['clean'], function () {
       .use(templates({
         engine: 'swig',
         directory: paths.templates
-      })))
+      }))
+      .use(permalinks()))
     .pipe(gulp.dest(paths.build));
 });
