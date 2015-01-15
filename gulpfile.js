@@ -33,47 +33,14 @@ gulp.task('metalsmith', ['clean'], function () {
       delete file.frontMatter;
     })
     .pipe(gulpsmith()
+      .use(buildDate())
       .use(drafts())
       .use(markdown({
         gfm: true
       }))
-      .use(buildDate())
       .use(templates({
         engine: 'swig',
         directory: paths.templates
       })))
     .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('assemble', function () {
-  var options = {
-    layoutdir: paths.templates + '/layouts',
-    layout: 'site.hbs',
-    partials: paths.templates + '/partials/*.hbs',
-    assets: paths.assets,
-    data: paths.data + '/*.{json,yml}',
-    helpers: [paths.templates + '/helpers/*.js', 'helper-moment', 'handlebars-helper-twitter'],
-    marked: {
-      gfm: true
-    },
-    plugins: ['assemble-contrib-permalinks'],
-    sitemap: {
-      dest: paths.dist
-    },
-    permalinks: {
-      preset: 'pretty'
-    }
-  };
-
-  // Root
-  gulp.src(paths.content + '/*.{md,hbs}')
-    .pipe(assemble(options))
-    .pipe(gulp.dest(paths.dist + '/'))
-
-  // Blog
-  options.layout = 'post.hbs';
-  options.plugins.push(paths.src + '/plugins/posts-without-index.js');
-  gulp.src(paths.content + '/blog/**/*.{md,hbs}')
-    .pipe(assemble(options))
-    .pipe(gulp.dest(paths.dist + '/blog/'))
 });
