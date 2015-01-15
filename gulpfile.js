@@ -8,8 +8,11 @@ var
   drafts = require('metalsmith-drafts'),
   markdown = require('metalsmith-markdown'),
   buildDate = require('metalsmith-build-date'),
+  collections = require('metalsmith-collections'),
+  permalinks = require('metalsmith-permalinks'),
   templates = require('metalsmith-templates'),
   gulpFrontMatter = require('gulp-front-matter'),
+  blogTemplate = require('./src/plugins/blog-template.js'),
   _ = require('lodash');
 
 var paths = {
@@ -35,6 +38,10 @@ gulp.task('metalsmith', ['clean'], function () {
     .pipe(gulpsmith()
       .use(buildDate())
       .use(drafts())
+      .use(collections({
+        posts: 'blog/*.md'
+      }))
+      .use(blogTemplate())
       .use(markdown({
         gfm: true
       }))
