@@ -7,6 +7,7 @@ var
   gulpsmith = require('gulpsmith'),
   drafts = require('metalsmith-drafts'),
   markdown = require('metalsmith-markdown'),
+  buildDate = require('metalsmith-build-date'),
   templates = require('metalsmith-templates'),
   gulpFrontMatter = require('gulp-front-matter'),
   _ = require('lodash');
@@ -36,6 +37,7 @@ gulp.task('metalsmith', ['clean'], function () {
       .use(markdown({
         gfm: true
       }))
+      .use(buildDate())
       .use(templates({
         engine: 'swig',
         directory: paths.templates
