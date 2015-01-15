@@ -12,7 +12,7 @@ var
   permalinks = require('metalsmith-permalinks'),
   templates = require('metalsmith-templates'),
   gulpFrontMatter = require('gulp-front-matter'),
-  blogTemplate = require('./src/plugins/blog-template.js'),
+  setTemplateForPosts = require('./src/plugins/set-template-for-posts.js'),
   _ = require('lodash');
 
 var paths = {
@@ -41,7 +41,7 @@ gulp.task('metalsmith', ['clean'], function () {
       .use(collections({
         posts: 'blog/*.md'
       }))
-      .use(blogTemplate())
+      .use(setTemplateForPosts())
       .use(markdown({
         gfm: true
       }))
