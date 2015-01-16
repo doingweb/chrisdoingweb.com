@@ -5,7 +5,6 @@ var
   debug = require('gulp-debug'),
   del = require('del'),
   gulpsmith = require('gulpsmith'),
-  drafts = require('metalsmith-drafts'),
   markdown = require('metalsmith-markdown'),
   buildDate = require('metalsmith-build-date'),
   collections = require('metalsmith-collections'),
@@ -37,7 +36,6 @@ gulp.task('metalsmith', ['clean'], function () {
     })
     .pipe(gulpsmith()
       .use(buildDate())
-      .use(drafts())
       .use(collections({
         posts: 'blog/*.md'
       }))
