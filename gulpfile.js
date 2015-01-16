@@ -8,10 +8,10 @@ var
   markdown = require('metalsmith-markdown'),
   buildDate = require('metalsmith-build-date'),
   collections = require('metalsmith-collections'),
+  meach = require('metalsmith-each'),
   permalinks = require('metalsmith-permalinks'),
   templates = require('metalsmith-templates'),
   gulpFrontMatter = require('gulp-front-matter'),
-  setTemplateForPosts = require('./src/plugins/set-template-for-posts.js'),
   _ = require('lodash');
 
 var paths = {
@@ -39,7 +39,11 @@ gulp.task('metalsmith', ['clean'], function () {
       .use(collections({
         posts: 'blog/*.md'
       }))
-      .use(setTemplateForPosts())
+      .use(meach(function (file, filename) {
+        if (file.collection.indexOf('posts') !== -1) {
+          file.template = 'post-layout.html';
+        }
+      }))
       .use(markdown({
         gfm: true
       }))
