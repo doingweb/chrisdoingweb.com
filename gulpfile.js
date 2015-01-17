@@ -5,12 +5,13 @@ var
   debug = require('gulp-debug'),
   del = require('del'),
   gulpsmith = require('gulpsmith'),
-  markdown = require('metalsmith-markdown'),
   buildDate = require('metalsmith-build-date'),
+  metadata = require('metalsmith-metadata'),
   collections = require('metalsmith-collections'),
   meach = require('metalsmith-each'),
-  permalinks = require('metalsmith-permalinks'),
+  markdown = require('metalsmith-markdown'),
   templates = require('metalsmith-templates'),
+  permalinks = require('metalsmith-permalinks'),
   gulpFrontMatter = require('gulp-front-matter'),
   _ = require('lodash');
 
@@ -36,6 +37,10 @@ gulp.task('metalsmith', ['clean'], function () {
     })
     .pipe(gulpsmith()
       .use(buildDate())
+      .use(metadata({
+        site: 'metadata/site.yaml',
+        contact: 'metadata/contact.yaml'
+      }))
       .use(collections({
         posts: 'blog/*.md'
       }))
