@@ -1,6 +1,6 @@
 ---
 title: Now I Have a Blog!
-date: 2014-08-21
+date: 2014-08-20
 description: My first blog post, where I explain why I wanted to start blogging.
 ---
 

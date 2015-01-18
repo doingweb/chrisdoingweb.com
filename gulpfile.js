@@ -4,15 +4,15 @@ var
   gulp = require('gulp'),
   debug = require('gulp-debug'),
   del = require('del'),
+  gulpFrontMatter = require('gulp-front-matter'),
   gulpsmith = require('gulpsmith'),
   buildDate = require('metalsmith-build-date'),
   metadata = require('metalsmith-metadata'),
   collections = require('metalsmith-collections'),
   meach = require('metalsmith-each'),
   markdown = require('metalsmith-markdown'),
-  templates = require('metalsmith-templates'),
   permalinks = require('metalsmith-permalinks'),
-  gulpFrontMatter = require('gulp-front-matter'),
+  templates = require('metalsmith-templates'),
   _ = require('lodash');
 
 var paths = {
@@ -52,12 +52,12 @@ gulp.task('metalsmith', ['clean'], function () {
       .use(markdown({
         gfm: true
       }))
+      .use(permalinks({
+        relative: false
+      }))
       .use(templates({
         engine: 'swig',
         directory: paths.templates
-      }))
-      .use(permalinks({
-        relative: false
       })))
     .pipe(gulp.dest(paths.build));
 });
