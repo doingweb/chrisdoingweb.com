@@ -19,7 +19,6 @@ var paths = {
   build: 'build',
   content: 'src/content',
   templates: 'src/templates',
-  assets: 'build/assets',
   data: 'src/data'
 };
 
