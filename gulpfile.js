@@ -13,16 +13,19 @@ var
   markdown = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
   templates = require('metalsmith-templates'),
+  sass = require('gulp-sass'),
+  sourcemaps = require('gulp-sourcemaps'),
   _ = require('lodash');
 
 var paths = {
   build: 'build',
   content: 'src/content',
+  scss: 'src/scss',
   templates: 'src/templates',
   data: 'src/data'
 };
 
-gulp.task('default', ['metalsmith']);
+gulp.task('default', ['metalsmith', 'css']);
 
 gulp.task('clean', function (done) {
   del(['build'], done);
@@ -59,4 +62,15 @@ gulp.task('metalsmith', ['clean'], function () {
         directory: paths.templates
       })))
     .pipe(gulp.dest(paths.build));
+});
+
+gulp.task('css', ['clean'], function () {
+  return gulp.src(paths.scss + '/*.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: ['bower_components'],
+      outputStyle: 'compressed'
+    }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(paths.build + '/css'))
 });
