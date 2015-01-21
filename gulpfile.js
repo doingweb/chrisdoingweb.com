@@ -15,7 +15,7 @@ var
   templates = require('metalsmith-templates'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
-  cssmin = require('gulp-minify-css'),
+  minifycss = require('gulp-minify-css'),
   sourcemaps = require('gulp-sourcemaps'),
   _ = require('lodash');
 
@@ -75,7 +75,7 @@ gulp.task('css', ['clean'], function () {
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
-    .pipe(cssmin())
+    .pipe(minifycss())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.build + '/css'))
 });
