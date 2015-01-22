@@ -4,4 +4,4 @@ node_modules
 *.lock
 credentials.json
 modernizr.js
-build/
+dist/
