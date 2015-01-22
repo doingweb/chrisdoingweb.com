@@ -17,24 +17,42 @@ var
   autoprefixer = require('gulp-autoprefixer'),
   minifycss = require('gulp-minify-css'),
   sourcemaps = require('gulp-sourcemaps'),
+  browserSync = require('browser-sync'),
+  runSequence = require('run-sequence'),
   _ = require('lodash');
 
 var paths = {
-  build: 'build',
   content: 'src/content',
   scss: 'src/scss',
   templates: 'src/templates',
-  data: 'src/data'
+  build: 'build',
+  css: 'build/css'
 };
 
-gulp.task('default', ['metalsmith', 'css']);
+var globs = {
+  build: paths.build + '/**/*',
+  scss: paths.scss + '/**/*.scss',
+  content: paths.content + '/**/*',
+  templates: paths.templates + '/**/*',
+  css: paths.css + '{,/**/*}'
+};
 
-gulp.task('clean', function (done) {
-  del(['build'], done);
+gulp.task('default', ['content', 'css']);
+
+gulp.task('clean-all', function (done) {
+  del([paths.build], done);
 });
 
-gulp.task('metalsmith', ['clean'], function () {
-  return gulp.src('src/content/**/*')
+gulp.task('clean-content', function (done) {
+  del([globs.build, '!' + globs.css], done);
+});
+
+gulp.task('clean-css', function (done) {
+  del([paths.css], done);
+});
+
+gulp.task('content', ['clean-content'], function () {
+  return gulp.src(globs.content)
     .pipe(gulpFrontMatter()).on("data", function(file) {
       _.assign(file, file.frontMatter);
       delete file.frontMatter;
@@ -66,8 +84,8 @@ gulp.task('metalsmith', ['clean'], function () {
     .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('css', ['clean'], function () {
-  return gulp.src(paths.scss + '/*.scss')
+gulp.task('css', ['clean-css'], function () {
+  return gulp.src(globs.scss)
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['bower_components']
@@ -77,5 +95,21 @@ gulp.task('css', ['clean'], function () {
     }))
     .pipe(minifycss())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(paths.build + '/css'))
+    .pipe(gulp.dest(paths.css))
+});
+
+gulp.task('serve', ['default'], function () {
+  browserSync({
+    server: {
+      baseDir: paths.build
+    }
+  });
+
+  gulp.watch('{' + globs.content + ',' + globs.templates + '}', function () {
+    runSequence('content', browserSync.reload);
+  })
+
+  gulp.watch(globs.scss, function () {
+    runSequence('css', browserSync.reload);
+  });
 });
