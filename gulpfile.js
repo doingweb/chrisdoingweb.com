@@ -17,7 +17,8 @@ gulp.task('content', ['clean-content'], content);
 
 gulp.task('css', ['clean-css'], css);
 
-gulp.task('js', ['js-jquery', 'js-foundation']);
+gulp.task('js', ['js-modernizr', 'js-jquery', 'js-foundation']);
+gulp.task('js-modernizr', ['clean-js'], js.modernizr);
 gulp.task('js-jquery', ['clean-js'], js.jquery);
 gulp.task('js-foundation', ['clean-js'], js.foundation);
 
