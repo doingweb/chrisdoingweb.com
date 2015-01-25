@@ -18,5 +18,5 @@ module.exports = function cssTask () {
     }))
     .pipe(minifycss())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(paths.css))
+    .pipe(gulp.dest(paths.css));
 };

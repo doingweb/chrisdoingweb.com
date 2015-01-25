@@ -20,4 +20,8 @@ module.exports = function serveTask () {
   gulp.watch(globs.scss, function () {
     runSequence('css', reload);
   });
+
+  gulp.watch('src/js/**/*', function () {
+    runSequence('js', reload);
+  });
 };

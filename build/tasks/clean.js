@@ -12,5 +12,8 @@ module.exports = {
   },
   css: function cleanCssTask (done) {
     del([paths.css], done);
+  },
+  js: function cleanJsTask (done) {
+    del(['dist/js'], done);
   }
 };
