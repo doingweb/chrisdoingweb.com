@@ -4,8 +4,7 @@ var
   sourcemaps = require('gulp-sourcemaps'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
-  minifycss = require('gulp-minify-css'),
-  paths = require('../paths');
+  minifycss = require('gulp-minify-css');
 
 module.exports = function cssTask () {
   return gulp.src(globs.scss)
@@ -18,5 +17,5 @@ module.exports = function cssTask () {
     }))
     .pipe(minifycss())
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(paths.css));
+    .pipe(gulp.dest('dist/css'));
 };

@@ -1,6 +1,5 @@
 var
   browserSync = require('browser-sync'),
-  paths = require('../paths'),
   gulp = require('gulp'),
   globs = require('../globs'),
   runSequence = require('run-sequence'),
@@ -9,11 +8,11 @@ var
 module.exports = function serveTask () {
   browserSync({
     server: {
-      baseDir: paths.build
+      baseDir: 'dist'
     }
   });
 
-  gulp.watch('{' + globs.content + ',' + globs.templates + '}', function () {
+  gulp.watch('{' + globs.content + ',src/templates/**/*}', function () {
     runSequence('content', reload);
   })
 

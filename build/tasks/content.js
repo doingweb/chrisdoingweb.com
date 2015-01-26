@@ -10,8 +10,7 @@ var
   meach = require('metalsmith-each'),
   markdown = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
-  templates = require('metalsmith-templates'),
-  paths = require('../paths');
+  templates = require('metalsmith-templates');
 
 module.exports = function contentTask () {
   return gulp.src(globs.content)
@@ -41,7 +40,7 @@ module.exports = function contentTask () {
       }))
       .use(templates({
         engine: 'swig',
-        directory: paths.templates
+        directory: 'src/templates'
       })))
-    .pipe(gulp.dest(paths.build));
+    .pipe(gulp.dest('dist'));
 };

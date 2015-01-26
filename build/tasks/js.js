@@ -1,6 +1,5 @@
 var
   gulp = require('gulp'),
-  paths = require('../paths'),
   sourcemaps = require('gulp-sourcemaps'),
   modernizr = require('gulp-modernizr'),
   concat = require('gulp-concat'),

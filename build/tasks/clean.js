@@ -1,17 +1,14 @@
-var
-  del = require('del'),
-  paths = require('../paths'),
-  globs = require('../globs');
+var del = require('del');
 
 module.exports = {
   all: function cleanAllTask (done) {
-    del([paths.build], done);
+    del(['dist'], done);
   },
   content: function cleanContentTask (done) {
-    del([globs.build, '!' + globs.css], done);
+    del(['dist/**/*', '!dist/css{,/**/*}'], done);
   },
   css: function cleanCssTask (done) {
-    del([paths.css], done);
+    del(['dist/css'], done);
   },
   js: function cleanJsTask (done) {
     del(['dist/js'], done);
