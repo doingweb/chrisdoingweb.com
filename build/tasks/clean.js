@@ -12,5 +12,8 @@ module.exports = {
   },
   js: function cleanJsTask (done) {
     del(['dist/js'], done);
+  },
+  buildMetadata: function cleanBuildMetadataTask (done) {
+    del(['build/.metadata'], done);
   }
 };
