@@ -14,6 +14,7 @@ var
   filter = require('gulp-filter'),
   htmlmin = require('gulp-htmlmin'),
   merge = require('merge-stream'),
+  cdnizer = require('gulp-cdnizer'),
   revCollector = require('gulp-rev-collector');
 
 module.exports = {
@@ -57,6 +58,7 @@ function contentTask (deploy) {
     content = merge(content, gulp.src('build/.metadata/rev-manifest-*.json'))
       .pipe(revCollector())
       .pipe(htmlFilter)
+      .pipe(cdnizer(['google:jquery']))
       .pipe(htmlmin({
         removeComments: true,
         collapseWhitespace: true
