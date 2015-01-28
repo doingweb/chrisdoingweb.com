@@ -26,4 +26,4 @@ gulp.task('css-deploy', ['clean-css', 'clean-build-metadata'], css({ rev: true }
 gulp.task('js', ['clean-js'], js());
 gulp.task('js-deploy', ['clean-js', 'clean-build-metadata'], js({ rev: true }));
 
-gulp.task('serve', ['default'], serve);
+gulp.task('serve', ['build-dev'], serve);
