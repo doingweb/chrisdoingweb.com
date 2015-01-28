@@ -5,7 +5,7 @@ module.exports = {
     del(['dist'], done);
   },
   content: function cleanContentTask (done) {
-    del(['dist/**/*', '!dist/css{,/**/*}'], done);
+    del(['dist/**/*', '!dist/{css,js}{,/**/*}'], done);
   },
   css: function cleanCssTask (done) {
     del(['dist/css'], done);
