@@ -8,34 +8,35 @@ var
   minifycss = require('gulp-minify-css'),
   rev = require('gulp-rev');
 
-module.exports = function (options) {
-  options = _.assign({ rev: false }, options);
-
-  return function cssTask () {
-    var css = gulp.src(globs.scss)
-      .pipe(sourcemaps.init())
-      .pipe(sass({
-        includePaths: ['bower_components']
-      }))
-      .pipe(autoprefixer({
-        browsers: ['last 2 versions']
-      }))
-      .pipe(minifycss());
-
-    if (options.rev) {
-      css = css.pipe(rev());
-    }
-
-    var outputCss = css
-      .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest('dist/css'));
-
-    if (options.rev) {
-      return outputCss
-        .pipe(rev.manifest('rev-manifest-css.json'))
-        .pipe(gulp.dest('build/.metadata'));
-    }
-
-    return outputCss;
-  };
+module.exports = {
+  dev: function () { return cssTask(); },
+  deploy: function () { return cssTask(true); }
 };
+
+function cssTask (deploy) {
+  var css = gulp.src(globs.scss)
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      includePaths: ['bower_components']
+    }))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions']
+    }))
+    .pipe(minifycss());
+
+  if (deploy) {
+    css = css.pipe(rev());
+  }
+
+  var outputCss = css
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('dist/css'));
+
+  if (deploy) {
+    return outputCss
+      .pipe(rev.manifest('rev-manifest-css.json'))
+      .pipe(gulp.dest('build/.metadata'));
+  }
+
+  return outputCss;
+}
