@@ -19,10 +19,10 @@ var
 
 module.exports = {
   dev: function () { return contentTask(); },
-  deploy: function () { return contentTask(true); }
+  prod: function () { return contentTask(true); }
 };
 
-function contentTask (deploy) {
+function contentTask (prod) {
   var content = gulp.src(globs.content)
     .pipe(gulpFrontMatter()).on("data", function(file) {
       _.assign(file, file.frontMatter);
@@ -53,7 +53,7 @@ function contentTask (deploy) {
         directory: 'src/templates'
       })));
 
-  if (deploy) {
+  if (prod) {
     var htmlFilter = filter('**/*.html');
     content = merge(content, gulp.src('build/.metadata/rev-manifest-*.json'))
       .pipe(revCollector())

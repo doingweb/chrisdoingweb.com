@@ -10,16 +10,16 @@ var
 gulp.task('default', ['build-dev']);
 
 gulp.task('build-dev', ['content', 'css', 'js']);
-gulp.task('build-deploy', ['content-deploy', 'css-deploy', 'js-deploy']);
+gulp.task('build-prod', ['content-prod', 'css-prod', 'js-prod']);
 
 gulp.task('content', ['clean-content'], content.dev);
-gulp.task('content-deploy', ['clean-content', 'css-deploy', 'js-deploy'], content.deploy);
+gulp.task('content-prod', ['clean-content', 'css-prod', 'js-prod'], content.prod);
 
 gulp.task('css', ['clean-css'], css.dev);
-gulp.task('css-deploy', ['clean-css', 'clean-build-metadata'], css.deploy);
+gulp.task('css-prod', ['clean-css', 'clean-build-metadata'], css.prod);
 
 gulp.task('js', ['clean-js'], js.dev);
-gulp.task('js-deploy', ['clean-js', 'clean-build-metadata'], js.deploy);
+gulp.task('js-prod', ['clean-js', 'clean-build-metadata'], js.prod);
 
 gulp.task('clean-all', ['clean-build-metadata'], clean.all);
 gulp.task('clean-content', clean.content);
@@ -28,5 +28,4 @@ gulp.task('clean-js', clean.js);
 gulp.task('clean-build-metadata', clean.buildMetadata);
 
 gulp.task('serve', ['build-dev'], serve);
-// gulp.task('deploy', ['build-deploy'], deploy);
-gulp.task('deploy', deploy);
+gulp.task('deploy', ['build-prod'], deploy);

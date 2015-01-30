@@ -10,10 +10,10 @@ var
 
 module.exports = {
   dev: function () { return cssTask(); },
-  deploy: function () { return cssTask(true); }
+  prod: function () { return cssTask(true); }
 };
 
-function cssTask (deploy) {
+function cssTask (prod) {
   var css = gulp.src(globs.scss)
     .pipe(sourcemaps.init())
     .pipe(sass({
@@ -24,7 +24,7 @@ function cssTask (deploy) {
     }))
     .pipe(minifycss());
 
-  if (deploy) {
+  if (prod) {
     css = css.pipe(rev());
   }
 
@@ -32,7 +32,7 @@ function cssTask (deploy) {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/css'));
 
-  if (deploy) {
+  if (prod) {
     return outputCss
       .pipe(rev.manifest('rev-manifest-css.json'))
       .pipe(gulp.dest('build/.metadata'));

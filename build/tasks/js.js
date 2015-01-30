@@ -10,10 +10,10 @@ var
 
 module.exports = {
   dev: function () { return jsTask(); },
-  deploy: function () { return jsTask(true); }
+  prod: function () { return jsTask(true); }
 };
 
-function jsTask (deploy) {
+function jsTask (prod) {
   var modernizrPipeline = pipeline(gulp.src([
       'src/scss/**/*.scss',
       'src/js/**/*.js'
@@ -32,7 +32,7 @@ function jsTask (deploy) {
 
   var mergedPipeline = merge(modernizrPipeline, jqueryPipeline, foundationPipeline);
 
-  if (deploy) {
+  if (prod) {
     mergedPipeline = mergedPipeline.pipe(rev());
   }
 
@@ -40,7 +40,7 @@ function jsTask (deploy) {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/js'));
 
-  if (deploy) {
+  if (prod) {
     return outputJs
       .pipe(rev.manifest('rev-manifest-js.json'))
       .pipe(gulp.dest('build/.metadata'));
