@@ -1,7 +1,6 @@
 var
   browserSync = require('browser-sync'),
   gulp = require('gulp'),
-  globs = require('../globs'),
   runSequence = require('run-sequence'),
   reload = browserSync.reload;
 
@@ -12,11 +11,11 @@ module.exports = function serveTask () {
     }
   });
 
-  gulp.watch('{' + globs.content + ',src/templates/**/*}', function () {
+  gulp.watch('{src/content/**/*,src/templates/**/*}', function () {
     runSequence('content', reload);
-  })
+  });
 
-  gulp.watch(globs.scss, function () {
+  gulp.watch('src/scss/**/*', function () {
     runSequence('css', reload);
   });
 

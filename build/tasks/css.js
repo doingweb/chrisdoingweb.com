@@ -1,7 +1,6 @@
 var
   _ = require('lodash'),
   gulp = require('gulp'),
-  globs = require('../globs'),
   sourcemaps = require('gulp-sourcemaps'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
@@ -14,7 +13,7 @@ module.exports = {
 };
 
 function cssTask (prod) {
-  var css = gulp.src(globs.scss)
+  var css = gulp.src('src/scss/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: ['bower_components']

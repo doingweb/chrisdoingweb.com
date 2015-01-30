@@ -1,7 +1,6 @@
 var
   _ = require('lodash'),
   gulp = require('gulp'),
-  globs = require('../globs'),
   gulpFrontMatter = require('gulp-front-matter'),
   gulpsmith = require('gulpsmith'),
   buildDate = require('metalsmith-build-date'),
@@ -23,7 +22,7 @@ module.exports = {
 };
 
 function contentTask (prod) {
-  var content = gulp.src(globs.content)
+  var content = gulp.src('src/content/**/*')
     .pipe(gulpFrontMatter()).on("data", function(file) {
       _.assign(file, file.frontMatter);
       delete file.frontMatter;
