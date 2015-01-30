@@ -6,3 +6,4 @@ credentials.json
 modernizr.js
 dist/
 build/.metadata
+.awspublish-*

@@ -3,8 +3,7 @@ var
   fs = require('fs'),
   credentials = JSON.parse(fs.readFileSync('credentials.json')),
   gulp = require('gulp'),
-  s3options = require('gulp-awspublish-router'),
-  parallelize = require("concurrent-transform");
+  s3options = require('gulp-awspublish-router');
 
 module.exports = function deployTask () {
   var publisher = s3.create(credentials.aws);
@@ -23,8 +22,7 @@ module.exports = function deployTask () {
       }
     }))
     .pipe(publisher.publish())
-    // .pipe(parallelize(publisher.publish(), 32))
     .pipe(publisher.sync())
-    // .pipe(publisher.cache())
+    .pipe(publisher.cache())
     .pipe(s3.reporter());
 };
