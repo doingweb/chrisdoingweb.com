@@ -9,6 +9,7 @@ var
   meach = require('metalsmith-each'),
   markdown = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
+  swig = require('swig'),
   templates = require('metalsmith-templates'),
   filter = require('gulp-filter'),
   htmlmin = require('gulp-htmlmin'),
@@ -22,6 +23,8 @@ module.exports = {
 };
 
 function contentTask (prod) {
+  swig.invalidateCache();
+
   var content = gulp.src('src/content/**/*')
     .pipe(gulpFrontMatter()).on("data", function(file) {
       _.assign(file, file.frontMatter);
