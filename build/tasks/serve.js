@@ -11,7 +11,7 @@ module.exports = function serveTask () {
     }
   });
 
-  gulp.watch('{src/content/**/*,src/templates/**/*}', function () {
+  gulp.watch('src/{content,templates}/**/*', function () {
     runSequence('content', reload);
   });
 
