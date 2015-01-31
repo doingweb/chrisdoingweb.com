@@ -8,5 +8,5 @@ Location: Pullman, Washington, USA
 /* SITE */
 
 Source: https://github.com/doingweb/chrisdoingweb.com
-Components: Foundation, Assemble, Modernizr, jQuery, Mono Social Icons Font, Highlight.js
-Software: Sassy Roboyeti, Grunt, Atom
+Components: Foundation, Metalsmith, Modernizr, jQuery, Highlight.js
+Software: Gulp, Atom

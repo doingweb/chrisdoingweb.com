@@ -17,13 +17,8 @@
     font-size: 1.25rem;
 
     a::before {
-      font-family: 'Mono Social Icons Font';
-      text-rendering: optimizeLegibility;
-      font-smoothing: antialiased;
-
       content: attr(data-icon);
       margin-right: 0.3em;
-      font-size: 130%;
       color: darken($secondary-color, 25%);
     }
   }
