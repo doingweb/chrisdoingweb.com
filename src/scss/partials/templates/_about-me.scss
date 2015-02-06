@@ -16,10 +16,12 @@
     margin-left: 0;
     font-size: 1.25rem;
 
-    a::before {
-      content: attr(data-icon);
-      margin-right: 0.3em;
-      color: darken($secondary-color, 25%);
+    li {
+      margin: 0.25em 0;
+    }
+
+    a {
+      //color: darken($secondary-color, 25%);
     }
   }
 }

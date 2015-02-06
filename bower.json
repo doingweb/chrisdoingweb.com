@@ -8,6 +8,7 @@
   "dependencies": {
     "foundation": "~5",
     "highlightjs-scss": "~7",
+    "icomoon-free": "doingweb/IcoMoon-Free#bowering",
     "jquery": "~2"
   }
 }

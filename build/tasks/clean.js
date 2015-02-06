@@ -13,6 +13,9 @@ module.exports = {
   js: function cleanJsTask (done) {
     del(['dist/js'], done);
   },
+  icons: function cleanIconsTask (done) {
+    del(['dist/images/icons.svg'], done);
+  },
   buildMetadata: function cleanBuildMetadataTask (done) {
     del(['build/.metadata'], done);
   }
