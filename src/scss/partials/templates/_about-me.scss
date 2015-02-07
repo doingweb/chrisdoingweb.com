@@ -1,3 +1,8 @@
+@mixin vertically-centered {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .about-me {
   margin-top: $paragraph-margin-bottom;
   margin-bottom: $paragraph-margin-bottom;
@@ -17,11 +22,28 @@
     font-size: 1.25rem;
 
     li {
-      margin: 0.25em 0;
+      margin: 0.5em 0;
     }
 
     a {
-      //color: darken($secondary-color, 25%);
+      .icon {
+        @include vertically-centered;
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 0.5em;
+        fill: darken($secondary-color, 25%);
+        transition: transform 0.05s linear;
+      }
+
+      span {
+        @include vertically-centered;
+      }
+
+      &:hover .icon {
+        transform: translateY(-2px);
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.25));
+        fill: $anchor-font-color-hover;
+      }
     }
   }
 }

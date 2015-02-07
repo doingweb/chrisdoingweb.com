@@ -10,6 +10,7 @@
     "gulp-awspublish": "^1.0.1",
     "gulp-awspublish-router": "doingweb/gulp-awspublish-router#windows-paths",
     "gulp-cdnizer": "^1.1.1",
+    "gulp-cheerio": "^0.6.2",
     "gulp-concat": "^2.4.3",
     "gulp-debug": "^1.0.1",
     "gulp-filter": "^2.0.0",

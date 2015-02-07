@@ -5,6 +5,7 @@ var
   gulp = require('gulp'),
   svgmin = require('gulp-svgmin'),
   svgstore = require('gulp-svgstore'),
+  cheerio = require('gulp-cheerio'),
   rename = require('gulp-rename'),
   rev = require('gulp-rev'),
   paths = {
@@ -23,7 +24,13 @@ function iconsTask (prod) {
 
   var sprite = gulp.src(icons)
     .pipe(svgstore())
-    .pipe(rename('icons.svg'));
+    .pipe(rename('icons.svg'))
+    .pipe(cheerio({
+      run: function ($) {
+        $('[fill]').removeAttr('fill');
+      },
+      parserOptions: { xmlMode: true }
+    }));
 
   if (prod) {
     sprite = sprite
