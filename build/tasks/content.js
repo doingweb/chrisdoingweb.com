@@ -60,7 +60,11 @@ function contentTask (prod) {
     content = merge(content, gulp.src('build/.metadata/rev-manifest-*.json'))
       .pipe(revCollector())
       .pipe(htmlFilter)
-      .pipe(cdnizer(['google:jquery']))
+      .pipe(cdnizer({
+        files: ['google:jquery'],
+        fallbackScript: '',
+        fallbackTest: '<script>${ test } || document.write(\'<script src="${ filepath }"><\\/script>\')<\/script>'
+      }))
       .pipe(htmlmin({
         removeComments: true,
         collapseWhitespace: true
