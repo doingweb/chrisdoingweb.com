@@ -8,6 +8,9 @@ links:
   - title: LinkedIn
     url: http://www.linkedin.com/in/chrisantes
     icon: 0457-linkedin
+  - title: CodePen
+    url: http://codepen.io/doingweb
+    icon: 0485-codepen
   - title: Reddit
     url: http://www.reddit.com/user/doingweb
     icon: 0456-reddit
