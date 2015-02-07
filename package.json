@@ -27,6 +27,7 @@
     "gulp-svgstore": "^5.0.0",
     "gulp-uglify": "^1.1.0",
     "gulpsmith": "^0.5.3",
+    "humans-generator": "^1.2.7",
     "js-yaml": "^3.2.5",
     "lodash": "^2.4.1",
     "merge-stream": "^0.1.7",
@@ -38,6 +39,7 @@
     "metalsmith-metadata": "doingweb/metalsmith-metadata#windows-paths",
     "metalsmith-permalinks": "^0.4.0",
     "metalsmith-templates": "^0.6.0",
+    "moment": "^2.9.0",
     "run-sequence": "^1.0.2",
     "svgo": "^0.5.0",
     "swig": "^1.4.2"
