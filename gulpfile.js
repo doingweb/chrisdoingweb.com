@@ -14,7 +14,7 @@ gulp.task('build-dev', ['content', 'css', 'js', 'icons']);
 gulp.task('build-prod', ['content-prod', 'css-prod', 'js-prod', 'icons-prod']);
 
 gulp.task('content', ['clean-content'], content.dev);
-gulp.task('content-prod', ['clean-content', 'css-prod', 'js-prod'], content.prod);
+gulp.task('content-prod', ['clean-content', 'css-prod', 'js-prod', 'icons-prod'], content.prod);
 
 gulp.task('css', ['clean-css'], css.dev);
 gulp.task('css-prod', ['clean-css', 'clean-build-metadata'], css.prod);
