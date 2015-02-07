@@ -22,4 +22,6 @@ module.exports = function serveTask () {
   gulp.watch('src/js/**/*', function () {
     runSequence('js', reload);
   });
+
+  gulp.watch('src/content/metadata/contact.yaml', ['icons', 'content']);
 };
