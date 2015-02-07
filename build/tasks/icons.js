@@ -27,7 +27,9 @@ function iconsTask (prod) {
 
   if (prod) {
     sprite = sprite
-      .pipe(svgmin())
+      .pipe(svgmin({
+        plugins: [{ cleanupIDs: false }]
+      }))
       .pipe(rev());
   }
 
