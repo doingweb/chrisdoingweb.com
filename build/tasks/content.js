@@ -45,7 +45,8 @@ function contentTask (prod) {
         }
       }))
       .use(markdown({
-        gfm: true
+        gfm: true,
+        smartypants: true
       }))
       .use(permalinks({
         relative: false
