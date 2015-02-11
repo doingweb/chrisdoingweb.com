@@ -7,6 +7,7 @@ var
   metadata = require('metalsmith-metadata'),
   collections = require('metalsmith-collections'),
   meach = require('metalsmith-each'),
+  highlightjs = require('metalsmith-metallic'),
   markdown = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
   swig = require('swig'),
@@ -44,6 +45,7 @@ function contentTask (prod) {
           file.template = 'post-layout.html';
         }
       }))
+      .use(highlightjs())
       .use(markdown({
         gfm: true,
         smartypants: true
