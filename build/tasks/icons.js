@@ -23,6 +23,7 @@ function iconsTask (prod) {
   var icons = contactLinks.map(function (link) { return path.join(paths.icons, link.icon + '.svg'); });
 
   var sprite = gulp.src(icons)
+    .pipe(rename({prefix: 'i'}))
     .pipe(svgstore())
     .pipe(rename('icons.svg'))
     .pipe(cheerio({

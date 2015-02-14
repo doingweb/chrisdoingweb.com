@@ -23,14 +23,15 @@ function jsTask (prod) {
       'bower_components/jquery/dist/jquery.js'
     ),
     'jquery.js');
-  var foundationPipeline = pipeline(gulp.src([
+  var bundlePipeline = pipeline(gulp.src([
+      'bower_components/svg4everybody/svg4everybody.js',
       'bower_components/foundation/js/foundation/foundation.js',
       'bower_components/foundation/js/foundation/foundation.topbar.js',
       'src/js/init-foundation.js'
     ]),
-    'foundation.js');
+    'bundle.js');
 
-  var mergedPipeline = merge(modernizrPipeline, jqueryPipeline, foundationPipeline);
+  var mergedPipeline = merge(modernizrPipeline, jqueryPipeline, bundlePipeline);
 
   if (prod) {
     mergedPipeline = mergedPipeline.pipe(rev());

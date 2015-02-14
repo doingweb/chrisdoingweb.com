@@ -5,7 +5,7 @@
   <ul class="contact">
     {% for link in contact.links -%}
     <li>
-      <a href="{{link.url}}"><svg role="img" class="icon"><use xlink:href="/images/icons.svg#{{link.icon}}"></use></svg><span>{{link.title}}</span></a>
+      <a href="{{link.url}}"><svg role="img" class="icon"><use xlink:href="/images/icons.svg#i{{link.icon}}"></use></svg><span>{{link.title}}</span></a>
     </li>
     {%- endfor %}
   </ul>
