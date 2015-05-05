@@ -1,11 +1,11 @@
 var
   s3 = require('gulp-awspublish'),
   fs = require('fs'),
-  credentials = JSON.parse(fs.readFileSync('credentials.json')),
   gulp = require('gulp'),
   s3options = require('gulp-awspublish-router');
 
 module.exports = function deployTask () {
+  var credentials = JSON.parse(fs.readFileSync('credentials.json'));
   var publisher = s3.create(credentials.aws);
 
   return gulp.src('dist/**/*')
