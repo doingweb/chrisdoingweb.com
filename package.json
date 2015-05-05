@@ -49,5 +49,7 @@
   "devDependencies": {
     "gulp-debug": "^1.0.1"
   },
-  "keywords": []
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build-prod"
+  }
 }
