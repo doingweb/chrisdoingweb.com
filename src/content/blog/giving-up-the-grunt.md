@@ -1,6 +1,6 @@
 ---
-title: (Re)Building a Static Website with Gulp and Metalsmith
-date: 2015-03-03
+title: Giving Up the Grunt
+date: 2015-03-12
 description: After finally launching my new website, I immediately began ripping out my build system and static site generator in favor of a pipelined approach.
 ---
 
@@ -8,7 +8,7 @@ description: After finally launching my new website, I immediately began ripping
 
 # What's wrong with Grunt?
 
-Nothing! Grunt is great! It has very straightforward conventions for [creating, registering](http://gruntjs.com/creating-tasks), and [configuring](http://gruntjs.com/configuring-tasks) tasks, and [the community is huge](http://gruntjs.com/plugins). The problem was really with [how I was using it](https://github.com/doingweb/chrisdoingweb.com/blob/54bc6ca8613cb1bbeda0c61b9181835475db9541/Gruntfile.js).
+Nothing! Grunt is great! It has very straightforward conventions for [creating, registering](http://gruntjs.com/creating-tasks), and [configuring](http://gruntjs.com/configuring-tasks) tasks, and [the community is huge](http://gruntjs.com/plugins). The problem was really with how I was using it.
 
 Grunt is designed for configuring and running tasks, especially tasks that need to run in a specific (sometimes complicated) sequence. This really lends itself to procedural builds where each individual task is atomic and can more or less stand on its own. But building a modern website is rarely like that.
 
@@ -89,7 +89,7 @@ While this gets the job done, there are a number of things that bother me about 
  * **Most of the tasks I've defined don't stand alone.** The only task that really makes sense on its own is the `build` task. I have all of these other tasks set up, but for example, `grunt autoprefixer` doesn't do anything useful (and will in fact fail in a clean environment).
  * **I have to herd files.** Rather than describing the process of building all at once, I can only express to Grunt how each individual task needs to run, and I'm left handling the plumbing. Since every task deals with real files for its input and output, I have to keep track of all of those intermediate files and guide them on their way between tasks. Boring!
  * **Changing the build requires more effort than it should.** How do I make a new build task that skips minification and revving? How about one that also rewrites some HTML to use the revved filenames? Hint: it's not just a matter of deleting those steps or adding a collector step to the HTML build. :(
- * **It's actually pretty noisy.** Each new task that I configure will add *at least* 7 new lines to the config, only a few of which having any interesting information. Let's look at that `sass` task again:
+ * **It's actually pretty noisy.** Each new task that I configure will add *at least* 8 new lines to the config, only a few of which having any interesting information. Let's have a look at that `sass` task again:
 
 ```js
 sass: {
@@ -103,12 +103,8 @@ sass: {
 
 The only real pieces of information we have here are `sass` and `'.tmp/site.css': 'site.scss'`. And the latter is just plumbing! All the rest is either boilerplate or brace soup.
 
-It's nice to be able to use JavaScript objects to configure tasks, but the steps we take in our CSS build are more of a *composite transformation*. That is, we always want the transformation to be atomic (no intermediates), and we can describe in complete detail how to get from input to output as a series of smaller transformations.
+It's nice to be able to use JavaScript objects to configure tasks, but if we look at our CSS build as a *composite transformation* instead of a series of independent tasks, things get a lot easier to describe.
 
 # What's so great about Gulp?
 
-## Assemble
-
-I wanted a JavaScript SSG that was paradoxically an all-in-one solution *and* unopinionated enough to let me control how to build my assets. I initially rejected Metalsmith because it seemed to lack several of the features of the big monoliths, like Jekyll or Wintersmith.
-
-# What's so great about Gulp?
+[Gulp](http://gulpjs.com/)
