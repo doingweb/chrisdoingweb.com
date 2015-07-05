@@ -38,7 +38,11 @@ function contentTask (prod) {
         contact: 'metadata/contact.yaml'
       }))
       .use(collections({
-        posts: 'blog/*.md'
+        posts: {
+          pattern: 'blog/*.md',
+          sortBy: 'date',
+          reverse: true
+        }
       }))
       .use(meach(function (file, filename) {
         if (file.collection.indexOf('posts') !== -1) {
