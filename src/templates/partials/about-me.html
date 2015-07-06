@@ -1,3 +1,4 @@
+{% include "../macros/icon.html" %}
 <!-- TODO: vCard? schema.org? -->
 <aside class="about-me small-12 large-3 columns">
   <div class="photo"><img class="portrait" src="{{ site.portrait }}" alt="My face."></div>
@@ -5,7 +6,7 @@
   <ul class="contact">
     {% for link in contact.links -%}
     <li>
-      <a href="{{link.url}}"><svg role="img" class="icon"><use xlink:href="/images/icons.svg#i{{link.icon}}"></use></svg><span>{{link.title}}</span></a>
+      <a href="{{link.url}}">{{ icon(link.icon) }}<span>{{link.title}}</span></a>
     </li>
     {%- endfor %}
   </ul>
