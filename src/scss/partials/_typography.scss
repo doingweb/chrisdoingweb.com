@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+pre {
+	margin-bottom: $paragraph-margin-bottom;
+}
+
 code {
 	font-size: 0.8rem;
 	background: #474949; // These two colors are borrowed from the code style.
@@ -22,7 +26,6 @@ code {
 
 pre code {
 	padding: 1.5em;
-	margin: 1em 0;
 	border-radius: 0.5rem;
 	line-height: 1.25em;
 	overflow: auto;
