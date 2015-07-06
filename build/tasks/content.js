@@ -24,7 +24,7 @@ module.exports = {
 };
 
 function contentTask (prod) {
-  swig.invalidateCache();
+  setupSwig();
 
   var content = gulp.src('src/content/**/*')
     .pipe(gulpFrontMatter()).on("data", function(file) {
@@ -44,11 +44,7 @@ function contentTask (prod) {
           reverse: true
         }
       }))
-      .use(meach(function (file, filename) {
-        if (file.collection.indexOf('posts') !== -1) {
-          file.template = 'post-layout.html';
-        }
-      }))
+      .use(setTemplateForBlogPosts())
       .use(highlightjs())
       .use(markdown({
         gfm: true,
@@ -81,4 +77,16 @@ function contentTask (prod) {
 
   return content
     .pipe(gulp.dest('dist'));
+}
+
+function setTemplateForBlogPosts() {
+  return meach(function (file, filename) {
+    if (file.collection.indexOf('posts') !== -1) {
+      file.template = 'post-layout.html';
+    }
+  });
+}
+
+function setupSwig() {
+  swig.invalidateCache();
 }
