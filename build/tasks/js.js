@@ -4,16 +4,13 @@ var
   sourcemaps = require('gulp-sourcemaps'),
   modernizr = require('gulp-modernizr'),
   concat = require('gulp-concat'),
+  glob = require('glob'),
   uglify = require('gulp-uglify'),
   merge = require('merge-stream'),
-  rev = require('gulp-rev');
+  rev = require('gulp-rev'),
+  del = require('del');
 
-module.exports = {
-  dev: function () { return jsTask(); },
-  prod: function () { return jsTask(true); }
-};
-
-function jsTask (prod) {
+function buildTask() {
   var modernizrPipeline = pipeline(gulp.src([
       'src/scss/**/*.scss',
       'src/js/**/*.js'
@@ -31,28 +28,35 @@ function jsTask (prod) {
     ]),
     'bundle.js');
 
-  var mergedPipeline = merge(modernizrPipeline, jqueryPipeline, bundlePipeline);
-
-  if (prod) {
-    mergedPipeline = mergedPipeline.pipe(rev());
-  }
-
-  var outputJs = mergedPipeline
+  return merge(modernizrPipeline, jqueryPipeline, bundlePipeline)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/js'));
+}
 
-  if (prod) {
-    return outputJs
-      .pipe(rev.manifest('rev-manifest-js.json'))
-      .pipe(gulp.dest('build/.metadata'));
-  }
+function prodTask() {
+  var jsGlob = 'dist/js/*.js';
+  var filesToDelete = glob.sync(jsGlob + '?(.map)');
 
-  return outputJs;
+  return gulp.src(jsGlob)
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(rev())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(rev.manifest('rev-manifest-js.json'))
+    .pipe(gulp.dest('build/.metadata'))
+    .on('end', function() {
+      del.sync(filesToDelete);
+    });
 }
 
 function pipeline (source, output) {
   return source
     .pipe(sourcemaps.init())
-    .pipe(concat({path: output, cwd: ''}))
-    .pipe(uglify());
+    .pipe(concat({path: output, cwd: ''}));
 }
+
+module.exports = {
+  build: buildTask,
+  prod: prodTask
+};

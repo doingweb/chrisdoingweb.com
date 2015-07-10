@@ -5,28 +5,51 @@ var
   gulp = require('gulp'),
   svgmin = require('gulp-svgmin'),
   svgstore = require('gulp-svgstore'),
-  cheerio = require('gulp-cheerio'),
+  cheerio = require('cheerio'),
+  gcheerio = require('gulp-cheerio'),
   rename = require('gulp-rename'),
   rev = require('gulp-rev'),
-  paths = {
-    icons: 'bower_components/icomoon-free/SVG',
-    contact: 'src/content/metadata/contact.yaml'
+  iconsPath = 'bower_components/icomoon-free/SVG';
+
+function buildTask() {
+
+}
+
+function prodTask() {
+
+}
+
+function metalsmithPlugin(prod) {
+  return function buildSprite(files, metalsmith, done){
+    var
+      icons = {},
+      re = new RegExp('^/icons.svg#i(.+)$');
+
+    for (var file in files) {
+      var $ = cheerio.load(files[file].contents);
+      $('svg.icon use').each(function() {
+        var match = $(this).attr('xlink:href').match(re);
+        if (match) {
+          icons[match[1]] = true;
+        }
+      });
+    }
+
+    var iconPaths = [];
+    for (var icon in icons) {
+      iconPaths.push(iconPath(icon));
+    }
+
+    buildIconSprite(iconPaths, prod, done);
   };
+}
 
-module.exports = {
-  dev: function () { return iconsTask(); },
-  prod: function () { return iconsTask(true); }
-};
-
-function iconsTask (prod) {
-  var contactLinks = yaml.load(fs.readFileSync(paths.contact)).links;
-  var icons = contactLinks.map(function (link) { return path.join(paths.icons, link.icon + '.svg'); });
-
+function buildIconSprite(icons, prod, done) {
   var sprite = gulp.src(icons)
     .pipe(rename({prefix: 'i'}))
     .pipe(svgstore())
     .pipe(rename('icons.svg'))
-    .pipe(cheerio({
+    .pipe(gcheerio({
       run: function ($) {
         $('[fill]').removeAttr('fill');
       },
@@ -45,10 +68,21 @@ function iconsTask (prod) {
     .pipe(gulp.dest('dist/images'));
 
   if (prod) {
-    return sprite
+    sprite = sprite
       .pipe(rev.manifest('rev-manifest-icons.json'))
       .pipe(gulp.dest('build/.metadata'));
   }
 
-  return sprite;
+  sprite.on('end', function() {
+    done();
+  });
 }
+
+function iconPath(iconName) {
+  return path.join(iconsPath, iconName + '.svg');
+}
+
+module.exports = {
+  build: buildTask,
+  prod: prodTask
+};

@@ -16,67 +16,70 @@ var
   htmlmin = require('gulp-htmlmin'),
   merge = require('merge-stream'),
   cdnizer = require('gulp-cdnizer'),
-  revCollector = require('gulp-rev-collector');
+  revCollector = require('gulp-rev-collector'),
+  icons = require('./icons'),
+  settings = {
+    metadata: {
+      site: 'metadata/site.yaml',
+      contact: 'metadata/contact.yaml'
+    },
+    collections: {
+      posts: {
+        pattern: 'blog/*.md',
+        sortBy: 'date',
+        reverse: true
+      }
+    },
+    markdown: {
+      gfm: true,
+      smartypants: true
+    },
+    permalinks: {
+      relative: false
+    },
+    templates: {
+      engine: 'swig',
+      directory: 'src/templates'
+    },
+    cdnizer: {
+      files: ['google:jquery'],
+      fallbackScript: '',
+      fallbackTest: '<script>${ test } || document.write(\'<script src="${ filepath }"><\\/script>\')<\/script>'
+    },
+    htmlmin: {
+      removeComments: true,
+      collapseWhitespace: true
+    }
+  };
 
-module.exports = {
-  dev: function () { return contentTask(); },
-  prod: function () { return contentTask(true); }
-};
-
-function contentTask (prod) {
+function buildTask () {
   setupSwig();
 
-  var content = gulp.src('src/content/**/*')
-    .pipe(gulpFrontMatter()).on("data", function(file) {
-      _.assign(file, file.frontMatter);
-      delete file.frontMatter;
-    })
+  return gulp.src('src/content/**/*')
+    .pipe(gulpFrontMatter()).on("data", moveFrontMatterPropertiesToFile)
     .pipe(gulpsmith()
       .use(buildDate())
-      .use(metadata({
-        site: 'metadata/site.yaml',
-        contact: 'metadata/contact.yaml'
-      }))
-      .use(collections({
-        posts: {
-          pattern: 'blog/*.md',
-          sortBy: 'date',
-          reverse: true
-        }
-      }))
+      .use(metadata(settings.metadata))
+      .use(collections(settings.collections))
       .use(setTemplateForBlogPosts())
       .use(highlightjs())
-      .use(markdown({
-        gfm: true,
-        smartypants: true
-      }))
-      .use(permalinks({
-        relative: false
-      }))
-      .use(templates({
-        engine: 'swig',
-        directory: 'src/templates'
-      })));
-
-  if (prod) {
-    var htmlFilter = filter('**/*.html');
-    content = merge(content, gulp.src('build/.metadata/rev-manifest-*.json'))
-      .pipe(revCollector())
-      .pipe(htmlFilter)
-      .pipe(cdnizer({
-        files: ['google:jquery'],
-        fallbackScript: '',
-        fallbackTest: '<script>${ test } || document.write(\'<script src="${ filepath }"><\\/script>\')<\/script>'
-      }))
-      .pipe(htmlmin({
-        removeComments: true,
-        collapseWhitespace: true
-      }))
-      .pipe(htmlFilter.restore());
-  }
-
-  return content
+      .use(markdown(settings.markdown))
+      .use(permalinks(settings.permalinks))
+      .use(templates(settings.templates)))
     .pipe(gulp.dest('dist'));
+}
+
+function prodTask() {
+  return merge(gulp.src('dist/**/*.html'), gulp.src('build/.metadata/rev-manifest-*.json'))
+    .pipe(revCollector())
+    .pipe(cdnizer(settings.cdnizer))
+    .pipe(htmlmin(settings.htmlmin))
+    .pipe(gulp.dest('dist'));
+}
+
+function moveFrontMatterPropertiesToFile(file) {
+  _.assign(file, file.frontMatter);
+  delete file.frontMatter;
 }
 
 function setTemplateForBlogPosts() {
@@ -90,3 +93,8 @@ function setTemplateForBlogPosts() {
 function setupSwig() {
   swig.invalidateCache();
 }
+
+module.exports = {
+  build: buildTask,
+  prod: prodTask
+};

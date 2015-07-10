@@ -7,3 +7,4 @@ modernizr.js
 dist/
 build/.metadata
 .awspublish-*
+*.log
