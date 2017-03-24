@@ -15,7 +15,7 @@ module.exports = function humanstxtTask (done) {
     },
     site: {
       'Source': 'https://github.com/doingweb/chrisdoingweb.com',
-      'Components': 'Foundation, Metalsmith, Modernizr, jQuery, Highlight.js, IcoMoon SVG icons',
+      'Components': 'Foundation, Metalsmith, jQuery, Highlight.js, IcoMoon SVG icons',
       'Software': 'Gulp, Atom',
       'Last update': moment().format('YYYY/MM/DD')
     },

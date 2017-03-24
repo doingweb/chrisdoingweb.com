@@ -3,7 +3,6 @@ node_modules
 .sass-cache
 *.lock
 credentials.json
-modernizr.js
 dist/
 build/.metadata
 .awspublish-*

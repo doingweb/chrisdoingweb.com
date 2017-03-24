@@ -2,7 +2,6 @@ var
   _ = require('lodash'),
   gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
-  modernizr = require('gulp-modernizr'),
   concat = require('gulp-concat'),
   glob = require('glob'),
   uglify = require('gulp-uglify'),
@@ -11,11 +10,6 @@ var
   del = require('del');
 
 function buildTask() {
-  var modernizrPipeline = pipeline(gulp.src([
-      'src/scss/**/*.scss',
-      'src/js/**/*.js'
-    ]).pipe(modernizr()),
-    'modernizr.js');
   var jqueryPipeline = pipeline(gulp.src(
       'bower_components/jquery/dist/jquery.js'
     ),
@@ -28,7 +22,7 @@ function buildTask() {
     ]),
     'bundle.js');
 
-  return merge(modernizrPipeline, jqueryPipeline, bundlePipeline)
+  return merge(jqueryPipeline, bundlePipeline)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/js'));
 }
