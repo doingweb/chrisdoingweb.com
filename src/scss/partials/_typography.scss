@@ -23,11 +23,16 @@ code {
 	margin: 1px; // Separate from adjacent punctuation, etc.
 }
 
-pre code {
+pre > code,
+.hljs {
 	padding: 1.5em;
 	border-radius: 0.5rem;
 	line-height: 1.25em;
 	overflow: auto;
+
+	&::-webkit-scrollbar { 
+    display: none; 
+	}
 }
 
 img {
