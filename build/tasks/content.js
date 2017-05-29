@@ -11,7 +11,8 @@ var
   markdown = require('metalsmith-markdown'),
   permalinks = require('metalsmith-permalinks'),
   swig = require('swig'),
-  templates = require('metalsmith-templates'),
+  inPlace = require('metalsmith-in-place'),
+  layout = require('metalsmith-layouts'),
   filter = require('gulp-filter'),
   htmlmin = require('gulp-htmlmin'),
   merge = require('merge-stream'),
@@ -37,7 +38,7 @@ var
     permalinks: {
       relative: false
     },
-    templates: {
+    layout: {
       engine: 'swig',
       directory: 'src/templates'
     },
@@ -65,7 +66,8 @@ function buildTask () {
       .use(highlightjs())
       .use(markdown(settings.markdown))
       .use(permalinks(settings.permalinks))
-      .use(templates(settings.templates)))
+      .use(inPlace())
+      .use(layout(settings.layout)))
     .pipe(gulp.dest('dist'));
 }
 

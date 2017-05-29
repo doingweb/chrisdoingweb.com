@@ -1,0 +1,1 @@
+{% macro image(cloudinaryId, altText, title, cssClasses='') %}<img src="http://res.cloudinary.com/chrisdoingweb/image/upload/{{ cloudinaryId }}.jpg" alt="{{ altText }}" title="{{ title }}"{% if cssClasses %} class="{{ cssClasses }}"{% endif %} />{% endmacro %}

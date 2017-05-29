@@ -1,7 +1,7 @@
 ---
 title: Contact
 description: How to contact Chris
-template: page.html
+layout: page.html
 ---
 
 # What's the best way to reach me?

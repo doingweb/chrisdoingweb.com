@@ -1,5 +1,4 @@
 h1, h2, h3, h4, h5, h6 {
-
 	// Headings are italicized, so emphasis is the opposite.
 	em {
 		font-style: normal;
@@ -33,12 +32,21 @@ pre code {
 
 img {
 	border-radius: 5px;
+
+	&.portrait {
+		border-radius: 50%;
+		width: 75%;
+		max-width: 300px; // Any bigger is just gross.
+	}
 }
 
-img.portrait {
-	border-radius: 50%;
-	width: 75%;
-	max-width: 300px; // Any bigger is just gross.
+.icon {
+	@include vertically-centered;
+	width: 1.25em;
+	height: 1.25em;
+	margin-right: 0.5em;
+	fill: darken($secondary-color, 25%);
+	transition: transform 0.05s linear;
 }
 
 .gallery figure {

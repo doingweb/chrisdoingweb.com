@@ -1,4 +1,4 @@
-var
+const
   fs = require('fs'),
   yaml = require('js-yaml'),
   path = require('path'),
@@ -12,40 +12,22 @@ var
   iconsPath = 'bower_components/icomoon-free/SVG';
 
 function buildTask() {
-
+  return buildIconSprite(getIconPaths(), false);
 }
 
 function prodTask() {
-
+  return buildIconSprite(getIconPaths(), true);
 }
 
-function metalsmithPlugin(prod) {
-  return function buildSprite(files, metalsmith, done){
-    var
-      icons = {},
-      re = new RegExp('^/icons.svg#i(.+)$');
+function getIconPaths () {
+  const iconListPath = path.join('src', 'content', 'metadata', 'icons.yaml'),
+    icons = yaml.load(fs.readFileSync(iconListPath, 'utf8'));
 
-    for (var file in files) {
-      var $ = cheerio.load(files[file].contents);
-      $('svg.icon use').each(function() {
-        var match = $(this).attr('xlink:href').match(re);
-        if (match) {
-          icons[match[1]] = true;
-        }
-      });
-    }
-
-    var iconPaths = [];
-    for (var icon in icons) {
-      iconPaths.push(iconPath(icon));
-    }
-
-    buildIconSprite(iconPaths, prod, done);
-  };
+  return icons.map(getIconPath);
 }
 
-function buildIconSprite(icons, prod, done) {
-  var sprite = gulp.src(icons)
+function buildIconSprite(iconPaths, isProd) {
+  let sprite = gulp.src(iconPaths)
     .pipe(rename({prefix: 'i'}))
     .pipe(svgstore())
     .pipe(rename('icons.svg'))
@@ -56,7 +38,7 @@ function buildIconSprite(icons, prod, done) {
       parserOptions: { xmlMode: true }
     }));
 
-  if (prod) {
+  if (isProd) {
     sprite = sprite
       .pipe(svgmin({
         plugins: [{ cleanupIDs: false }]
@@ -67,18 +49,16 @@ function buildIconSprite(icons, prod, done) {
   sprite = sprite
     .pipe(gulp.dest('dist/images'));
 
-  if (prod) {
+  if (isProd) {
     sprite = sprite
       .pipe(rev.manifest('rev-manifest-icons.json'))
       .pipe(gulp.dest('build/.metadata'));
   }
 
-  sprite.on('end', function() {
-    done();
-  });
+  return sprite;
 }
 
-function iconPath(iconName) {
+function getIconPath(iconName) {
   return path.join(iconsPath, iconName + '.svg');
 }
 
