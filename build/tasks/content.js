@@ -62,7 +62,7 @@ function buildTask () {
       .use(buildDate())
       .use(metadata(settings.metadata))
       .use(collections(settings.collections))
-      .use(setTemplateForBlogPosts())
+      .use(setLayoutForBlogPosts())
       .use(highlightjs())
       .use(markdown(settings.markdown))
       .use(permalinks(settings.permalinks))
@@ -84,10 +84,10 @@ function moveFrontMatterPropertiesToFile(file) {
   delete file.frontMatter;
 }
 
-function setTemplateForBlogPosts() {
+function setLayoutForBlogPosts() {
   return meach(function (file, filename) {
     if (file.collection.indexOf('posts') !== -1) {
-      file.template = 'post-layout.html';
+      file.layout = 'post-layout.html';
     }
   });
 }
