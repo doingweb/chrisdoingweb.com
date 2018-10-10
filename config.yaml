@@ -1,0 +1,54 @@
+# https://gohugo.io/getting-started/configuration/#all-configuration-settings
+baseurl: https://chrisdoingweb.com
+title: Chris Doing Web
+description: Chris Antes, the Web Developer
+
+languageCode: en-us
+defaultContentLanguage: en
+
+theme: beautifulhugo
+
+googleAnalytics: UA-45605370-1
+
+author:
+  name: Chris Antes
+  email: chris@chrisdoingweb.com
+  github: doingweb
+  twitter: doingweb
+  codepen: doingweb
+  linkedin: chrisantes
+  stackoverflow: users/467354/doingweb
+  reddit: doingweb
+
+permalinks:
+  posts: /blog/:year/:slug
+
+params:
+  homeTitle: Hi there!
+  subtitle: I'm Chris. I like code and people.
+  logo: images/face.jpg # Expecting square dimensions
+
+  dateFormat: "January 2, 2006"
+
+  # commit: https://github.com/doingweb/chrisdoingweb.com/tree/ # TODO: https://themes.gohugo.io/beautifulhugo/#commit-sha-on-the-footer
+  rss: true
+  comments: true
+  readingTime: true
+  wordCount: true
+  socialShare: true
+  showRelatedPosts: true
+
+  # Syntax highlighting
+  useHLJS: true
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Blog
+      url: /blog
+      weight: 2
+    - name: About
+      url: /about
+      weight: 3

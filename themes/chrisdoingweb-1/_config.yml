@@ -1,0 +1,21 @@
+css:
+  site: /css/site.css
+  home: /css/home.css
+
+menu:
+  Home: /
+  Archives: /archives
+
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:

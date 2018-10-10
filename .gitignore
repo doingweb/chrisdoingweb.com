@@ -1,9 +1,11 @@
-bower_components
-node_modules
-.sass-cache
-*.lock
-credentials.json
-dist/
-build/.metadata
-.awspublish-*
-*.log
+# Build-related
+public/
+resources/_gen
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Other

@@ -1,0 +1,4 @@
+/* Custom styles. Don't be tempted! */
+
+/* Effectively remove padding on outer <pre> element. */
+pre code.hljs { margin: -9.5px; }
