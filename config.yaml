@@ -30,7 +30,7 @@ params:
 
   dateFormat: "January 2, 2006"
 
-  # commit: https://github.com/doingweb/chrisdoingweb.com/tree/ # TODO: https://themes.gohugo.io/beautifulhugo/#commit-sha-on-the-footer
+  commit: https://github.com/doingweb/chrisdoingweb.com/tree/
   rss: true
   comments: true
   readingTime: true
