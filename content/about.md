@@ -1,6 +1,6 @@
 ---
 title: About me
-description: Get to know more about Chris
+description: What am I about?
 socialShare: false
 ---
 
