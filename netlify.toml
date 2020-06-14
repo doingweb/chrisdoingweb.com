@@ -3,17 +3,17 @@ publish = "public"
 command = "chmod a+x build.sh && ./build.sh -b $URL"
 
 [context.production.environment]
-HUGO_VERSION = "0.54.0"
+HUGO_VERSION = "0.72.0"
 HUGO_ENV = "production"
 
 [context.deploy-preview]
 command = "chmod a+x build.sh && ./build.sh --buildFuture -b $DEPLOY_PRIME_URL"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.54.0"
+HUGO_VERSION = "0.72.0"
 
 [context.branch-deploy]
 command = "chmod a+x build.sh && ./build.sh -b $DEPLOY_PRIME_URL"
 
 [context.branch-deploy.environment]
-HUGO_VERSION = "0.54.0"
+HUGO_VERSION = "0.72.0"
