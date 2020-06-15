@@ -23,6 +23,14 @@ author:
 permalinks:
   posts: /blog/:year/:slug
 
+enableGitInfo: true
+
+frontmatter:
+  lastmod:
+    - lastmod
+    - date
+    - publishDate
+
 params:
   homeTitle: Hi there!
   subtitle: I'm Chris. I like code and people.

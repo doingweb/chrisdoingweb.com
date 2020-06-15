@@ -1,6 +1,6 @@
 ---
 title: Minifying Browserified Angular Modules
-date: 2015-07-05
+publishDate: 2015-07-05
 description: Fixing "Unknown provider" errors by helping ng-annotate work with Browserify-ready CommonJS modules.
 aliases:
   - /blog/minifying-browserified-angular-modules/
