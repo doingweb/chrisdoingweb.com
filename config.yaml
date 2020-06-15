@@ -30,6 +30,9 @@ params:
 
   dateFormat: "January 2, 2006"
 
+  mainSections:
+    - post
+
   commit: https://github.com/doingweb/chrisdoingweb.com/tree/
   rss: true
   comments: true

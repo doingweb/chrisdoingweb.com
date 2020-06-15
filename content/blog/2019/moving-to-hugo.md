@@ -1,5 +1,4 @@
 ---
-type: post
 title: Moving to Hugo
 subtitle:
 date: 2019-04-02T18:57:56-07:00
