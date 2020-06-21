@@ -1,6 +1,7 @@
 ---
 title: Notes on Setting Up a Raspberry Pi
 date: 2020-06-14T17:58:30-07:00
+lastmod: 2020-06-21
 tags:
   - notes
   - raspberrypi
@@ -121,7 +122,7 @@ And add it to the pi (in the SSH session):
 
 ```console
 mkdir ~/.ssh
-vim ~/.ssh/authorized_keys
+nano ~/.ssh/authorized_keys
 ```
 
 (Paste & save)
@@ -154,7 +155,7 @@ sudo apt update
 Upgrade anything new:
 
 ```console
-sudo apt dist-upgrade
+sudo apt full-upgrade
 ```
 
 Clean up anything that can be autoremoved:
