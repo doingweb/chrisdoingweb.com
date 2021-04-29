@@ -17,3 +17,11 @@ hugo server
 ```
 
 Write!
+
+### Creating a new post
+
+Do this:
+
+```console
+hugo new blog/YYYY/article-title-goes-here.md
+```
