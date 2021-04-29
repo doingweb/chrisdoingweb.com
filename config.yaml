@@ -33,7 +33,7 @@ frontmatter:
 
 params:
   homeTitle: Hi there!
-  subtitle: I'm Chris. I like code and people.
+  subtitle: I'm Chris. I'm a software engineer who cheers on his coworkers, can totally help you write those tests, and puts his dishes in the dishwasher.
   logo: images/face.jpg # Expecting square dimensions
 
   dateFormat: "January 2, 2006"
