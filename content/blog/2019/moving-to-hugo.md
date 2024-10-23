@@ -9,7 +9,9 @@ tags:
   - advice
 ---
 
-<p class="lead">So I decided to take the advice of my wise and valued friend, <a href="https://spaceninja.com/">Scott Vandehey</a>, and trade in my custom-built over-engineered static site generator for off-the-shelf parts.</p>
+{{< lead >}}
+So I decided to take the advice of my wise and valued friend, [Scott Vandehey](https://spaceninja.com/), and trade in my custom-built over-engineered static site generator for off-the-shelf parts.
+{{< /lead >}}
 
 Like many web developers in 2013, I was enamored of the power of [Grunt](http://gruntjs.com). It seemed well worth learning for someone who makes a living building web applications. I would integrate Grunt into some of my work projects, where we'd just started to shift to driving applications with client-side JavaScript and styling with Sass (we worked in .NET mostly). It went very well! Our Angular apps and stylesheets came together like they were supposed to, and when there were issues or we wanted to add something else, working on a `Gruntfile.js` was far more approachable than MSBuild.
 
