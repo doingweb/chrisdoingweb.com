@@ -10,16 +10,6 @@ theme: beautifulhugo
 
 googleAnalytics: UA-45605370-1
 
-author:
-  name: Chris Antes
-  email: chris@chrisdoingweb.com
-  github: doingweb
-  twitter: doingweb
-  codepen: doingweb
-  linkedin: chrisantes
-  stackoverflow: users/467354/doingweb
-  reddit: doingweb
-
 permalinks:
   posts: /blog/:year/:slug
 
@@ -35,6 +25,16 @@ params:
   homeTitle: Hi there!
   subtitle: I'm Chris. I'm a software engineer who cheers on his coworkers, can totally help you write those tests, and puts his dishes in the dishwasher.
   logo: images/face.jpg # Expecting square dimensions
+
+  author:
+    name: Chris Antes
+    email: chris@chrisdoingweb.com
+    github: doingweb
+    twitter: doingweb
+    codepen: doingweb
+    linkedin: chrisantes
+    stackoverflow: users/467354/doingweb
+    reddit: doingweb
 
   dateFormat: "January 2, 2006"
 
