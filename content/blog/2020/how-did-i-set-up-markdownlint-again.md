@@ -6,7 +6,9 @@ tags:
   - notes
 ---
 
+{{< lead >}}
 When starting a new project, there's always a number of configurations to set up. Of course, you could maintain templates to generate these things using some tool, but if you're like me and aren't starting a new project every other day, you might just ask yourself "Hey what did I do for this in the past? I think I'll just copy it from there."
+{{< /lead >}}
 
 <!--more-->
 

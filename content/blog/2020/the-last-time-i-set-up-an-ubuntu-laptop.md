@@ -6,17 +6,17 @@ tags:
   - ubuntu
 ---
 
+{{< lead >}}
 A year or two ago I rebuilt an old Dell XPS 13 L321X as a development laptop. Here's the notes I took! Maybe they'll help you, maybe not.
+{{< /lead >}}
 
 <!--more-->
 
-Install Chrome
---------------
+## Install Chrome
 
 There's a `.deb` available for [regular Chrome](https://www.google.com/chrome/) (as opposed to Chromium). When installed, it will also add the Google repository, for updates.
 
-Mount flash drive to restore backups
-------------------------------------
+## Mount flash drive to restore backups
 
 My flash drive was formatted as exFAT, which does not ship with Ubuntu. Simply [installing `exfat-fuse` and `exfat-utils`](https://itsfoss.com/mount-exfat/) made it instantly available:
 
@@ -24,8 +24,7 @@ My flash drive was formatted as exFAT, which does not ship with Ubuntu. Simply [
 sudo apt install exfat-fuse exfat-utils
 ```
 
-Fix click-and-drag
-------------------
+## Fix click-and-drag
 
 When attempting to copy over some files from my flash drive, I noticed I couldn't drag-and-drop with the touchpad. [Installing `xserver-xorg-input-synaptics`](https://bugs.launchpad.net/ubuntu/+source/unity-greeter/+bug/1763209) followed by a system restart fixed this.
 
@@ -33,8 +32,7 @@ When attempting to copy over some files from my flash drive, I noticed I couldn'
 sudo apt install xserver-xorg-input-synaptics
 ```
 
-Use ZSH
--------
+## Use ZSH
 
 I've become accustomed to ZSH at work and really like it. Plus, it enables the very nice [Oh My Zsh](https://ohmyz.sh/) framework. Start by installing it:
 
@@ -50,8 +48,7 @@ chsh -s $(which zsh)
 
 To have this take effect, just log out and then back in and GNOME Terminal should pick it up.
 
-Oh My Zsh
----------
+## Oh My Zsh
 
 Oh My Zsh [installs](https://ohmyz.sh/#install) (as of this writing) via a cURL command:
 
@@ -61,8 +58,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 This overwrites your `.zshrc` file but will make a backup of the old one for you. Just start a new terminal (or `source ~/.zshrc` or whatever) to get all the Oh My Zsh goodness.
 
-Ctrl-* keys in zsh
-------------------
+## Ctrl-* keys in zsh
 
 I like to use `ctrl-left` and `ctrl-right` to navigate text and `ctrl-backspace` and `ctrl-delete` to delete words at a time. Oh My Zsh includes the navigation bindings, but not the "kill word" ones, which we'll need to [add ourselves](https://unix.stackexchange.com/questions/12787/zsh-kill-ctrl-backspace-ctrl-delete) in `.zshrc`:
 
@@ -73,8 +69,7 @@ bindkey '^H' backward-kill-word
 
 That Stack Exchange link mentions that `^H` may not work, but it worked for me 🤷‍♀️.
 
-Syntax highlighting in `less`
------------------------------
+## Syntax highlighting in `less`
 
 First, install the `source-highlight` package, which gives us the `src-hilite-lesspipe.sh` script:
 
@@ -91,8 +86,7 @@ export LESS=' -R '
 
 [source](https://unix.stackexchange.com/questions/90990/less-command-and-syntax-highlighting/139787#139787)
 
-Making the terminal a little better
------------------------------------
+## Making the terminal a little better
 
 ### Agnoster theme
 
@@ -126,8 +120,7 @@ Under `Preferences - Shortcuts` > `Tabs`, we *cannot* simply change "Switch to N
 
 Under `dconf-editor`, navigate to `/org/gnome/terminal/legacy/keybindings` and find the `next-tab` and `prev-tab` settings. Configure them to override the defaults with `<Ctrl>Tab` and `<Ctrl><Shift>Tab` respectively.
 
-Dropbox
--------
+## Dropbox
 
 We need Dropbox to get to our KeePass database (and because it's generally handy). There are [official instructions from Dropbox](https://www.dropbox.com/help/desktop-web/linux-commands), but they're slightly incomplete. Following along from the beginning, add the Dropbox package repository source:
 
@@ -155,8 +148,7 @@ sudo apt install python-gpg dropbox
 
 An "Update-notifier" window will open to continue the installation.
 
-KeePass
--------
+## KeePass
 
 Now we're finally ready to set up KeePass:
 
@@ -164,8 +156,7 @@ Now we're finally ready to set up KeePass:
 sudo apt install keepassxc
 ```
 
-`pbcopy` and `pbpaste`
-----------------------
+## `pbcopy` and `pbpaste`
 
 It's so handy to have [commands to marshal shell I/O and the clipboard](https://superuser.com/questions/288320/whats-like-osxs-pbcopy-for-linux/288333#288333).
 

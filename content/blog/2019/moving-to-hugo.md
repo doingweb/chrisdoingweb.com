@@ -13,6 +13,8 @@ tags:
 So I decided to take the advice of my wise and valued friend, [Scott Vandehey](https://spaceninja.com/), and trade in my custom-built over-engineered static site generator for off-the-shelf parts.
 {{< /lead >}}
 
+<!--more-->
+
 Like many web developers in 2013, I was enamored of the power of [Grunt](http://gruntjs.com). It seemed well worth learning for someone who makes a living building web applications. I would integrate Grunt into some of my work projects, where we'd just started to shift to driving applications with client-side JavaScript and styling with Sass (we worked in .NET mostly). It went very well! Our Angular apps and stylesheets came together like they were supposed to, and when there were issues or we wanted to add something else, working on a `Gruntfile.js` was far more approachable than MSBuild.
 
 So when I decided to make a shiny new website from scratch to market myself and (feebly attempt to) blog, I reached for another popular JavaScript build tool, [Gulp](https://gulpjs.com), and picked out a [static site generator](https://metalsmith.io/) that would work well with a pipeline-oriented approach. It ended up working very well and I learned a lot putting all of the pieces together to make exactly the site I wanted.

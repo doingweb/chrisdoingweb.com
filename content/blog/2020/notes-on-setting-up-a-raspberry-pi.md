@@ -7,12 +7,13 @@ tags:
   - raspberrypi
 ---
 
+{{< lead >}}
 My personal notes on how to get a new Raspberry Pi ready for action. Written for a Mac, but the general steps should translate to any platform.
+{{< /lead >}}
 
 <!--more-->
 
-Download the OS image
----------------------
+## Download the OS image
 
 Start by [downloading the official Raspberry Pi OS (32-bit) Lite image](https://www.raspberrypi.org/downloads/raspberry-pi-os/). For this example, it was `2020-05-27-raspios-buster-lite-armhf.zip`.
 
@@ -33,8 +34,7 @@ $ rm 2020-05-27-raspios-buster-lite-armhf.zip
 $
 ```
 
-Burn to a micro SD card
------------------------
+## Burn to a micro SD card
 
 Use [Etcher](https://www.balena.io/etcher/).
 
@@ -44,8 +44,7 @@ To install, if you haven't already:
 brew cask install balenaetcher
 ```
 
-Configure via `boot` partition
-----------------------------
+## Configure via `boot` partition
 
 It's FAT32, so totally mountable on MacOS. Should automatically mount to `/Volumes/boot`. If it mounts as read-only, make sure the little physical switch on the adapter didn't get bumped on the way in.
 
@@ -84,8 +83,7 @@ Finally, unmount the card:
 diskutil unmount /Volumes/boot
 ```
 
-Configure the machine
----------------------
+## Configure the machine
 
 Put the SD card in the pi and boot it up. After a little while, try SSHing into it:
 
@@ -141,8 +139,7 @@ sudo reboot
 
 Then SSH back in (using your new hostname). As long as you've done `ssh-add` already, it should connect up no problem.
 
-Apply Updates
--------------
+## Apply Updates
 
 Even if you pulled a fresh image, there's surely something that's been updated since.
 
@@ -164,8 +161,7 @@ Clean up anything that can be autoremoved:
 sudo apt autoremove
 ```
 
-Clean Up
---------
+## Clean Up
 
 Delete the "known" host for `raspberrypi.local`, or else it will issue an alarming security error the next time you're setting up another Raspberry Pi:
 

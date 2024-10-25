@@ -10,7 +10,11 @@ tags:
   - angular
 ---
 
+{{< lead >}}
 If you've used [Angular](https://angularjs.org/) in production, you've probably learned the importance of [annotating your dependencies](https://docs.angularjs.org/guide/di#dependency-annotation) when using a minifier like [Uglify](https://github.com/mishoo/UglifyJS2): when parameter names get [mangled](http://lisperator.net/uglifyjs/mangle), Angular's implicit annotation feature breaks. The [ng-annotate](https://www.npmjs.com/package/ng-annotate) package does a great job at alleviating us of this responsibility, but it may need a little hint when you're using something like [Browserify](http://browserify.org/) to organize your code as CommonJS modules.
+{{< /lead >}}
+
+<!--more-->
 
 Let's describe the problem with a little bit of code. First, a simple Angular app authored as a CommonJS module:
 
