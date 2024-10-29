@@ -1,0 +1,8 @@
+{{- $name := .Get "name" -}}
+{{- $path := path.Dir .Page.File.Path -}}
+{{- $videoURL := printf "https://res.cloudinary.com/chrisdoingweb/video/upload/f_webm,q_auto:eco/v1/%s/%s" $path $name -}}
+
+<video style="width: 100%;" autoplay loop muted>
+  <source src="{{ $videoURL }}" type="video/webm">
+  Video not supported 😕
+</video>
